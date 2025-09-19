@@ -469,54 +469,45 @@ export default function CaliberSite() {
               </h3>
             </div>
             
-            <div className="relative cursor-pointer group" onClick={() => window.open('https://fuel1direct.com/seller/calibermarineandauto-com/', '_blank', 'noopener,noreferrer')}>
-              {/* Store Preview Image/Placeholder */}
-              <div className="w-full h-[800px] rounded-2xl border border-white/10 shadow-2xl bg-gradient-to-br from-[#0b0f14] to-[#1a1f24] flex items-center justify-center relative overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-10 left-10 w-32 h-32 bg-[#800108] rounded-full blur-3xl"></div>
-                  <div className="absolute bottom-10 right-10 w-24 h-24 bg-[#aba296] rounded-full blur-2xl"></div>
-                  <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-[#800108] rounded-full blur-xl"></div>
-                </div>
-                
-                {/* Store Preview Content */}
-                <div className="text-center z-10">
-                  <div className="mb-6">
-                    <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#800108] to-[#aba296] flex items-center justify-center">
-                      <Truck className="h-10 w-10 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-white mb-2">Caliber Marine & Auto Store</h3>
-                    <p className="text-white/70 mb-4">Browse our full catalog of products</p>
-                  </div>
-                  
-                  {/* Product Categories Preview */}
-                  <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
-                    <div className="bg-white/5 rounded-lg p-3 border border-white/10">
-                      <Radio className="h-6 w-6 text-[#aba296] mx-auto mb-2" />
-                      <p className="text-sm text-white/80">Marine Electronics</p>
-                    </div>
-                    <div className="bg-white/5 rounded-lg p-3 border border-white/10">
-                      <Truck className="h-6 w-6 text-[#800108] mx-auto mb-2" />
-                      <p className="text-sm text-white/80">Automotive Parts</p>
-                    </div>
-                    <div className="bg-white/5 rounded-lg p-3 border border-white/10">
-                      <Wrench className="h-6 w-6 text-[#aba296] mx-auto mb-2" />
-                      <p className="text-sm text-white/80">Tools & Hardware</p>
-                    </div>
-                    <div className="bg-white/5 rounded-lg p-3 border border-white/10">
-                      <Boxes className="h-6 w-6 text-[#800108] mx-auto mb-2" />
-                      <p className="text-sm text-white/80">Accessories</p>
-                    </div>
-                  </div>
-                  
-                  {/* Click to Visit Button */}
-                  <div className="mt-8">
-                    <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#800108] to-[#aba296] px-6 py-3 rounded-xl font-semibold text-white group-hover:scale-105 transition-transform duration-200">
-                      Click to Visit Store <ArrowRight className="h-5 w-5" />
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="relative cursor-pointer" onClick={() => window.open('https://fuel1direct.com/seller/calibermarineandauto-com/', '_blank', 'noopener,noreferrer')}>
+              <iframe
+                src="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                className="w-full h-[800px] rounded-2xl border border-white/10 shadow-2xl pointer-events-none"
+                title="Caliber Marine & Auto Store Preview"
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin"
+                onError={() => {
+                  // Fallback if iframe fails to load
+                  const iframe = document.querySelector('iframe[title="Caliber Marine & Auto Store Preview"]');
+                  if (iframe) {
+                    iframe.style.display = 'none';
+                    const fallback = document.createElement('div');
+                    fallback.className = 'w-full h-[800px] rounded-2xl border border-white/10 shadow-2xl bg-gradient-to-br from-[#0b0f14] to-[#1a1f24] flex items-center justify-center cursor-pointer';
+                    fallback.innerHTML = `
+                      <div class="text-center">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#800108] to-[#aba296] flex items-center justify-center">
+                          <svg class="h-10 w-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-1.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zM17 12V9.5h2.5l2 2.5H17z"/>
+                          </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-2">Caliber Marine & Auto Store</h3>
+                        <p class="text-white/70 mb-4">Browse our full catalog of products</p>
+                        <div class="inline-flex items-center gap-3 bg-gradient-to-r from-[#800108] to-[#aba296] px-6 py-3 rounded-xl font-semibold text-white">
+                          Click to Visit Store
+                          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    `;
+                    fallback.onclick = () => window.open('https://fuel1direct.com/seller/calibermarineandauto-com/', '_blank', 'noopener,noreferrer');
+                    iframe.parentNode.insertBefore(fallback, iframe.nextSibling);
+                  }
+                }}
+              />
+              
+              {/* Simple overlay for better integration */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-[#0b0f14]/5 to-transparent pointer-events-none" />
             </div>
             
             {/* Fallback link */}
