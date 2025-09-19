@@ -218,9 +218,7 @@ export default function CaliberSite() {
 
       {/* Header */}
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all ${
-          scrolled ? "bg-[#0b0f14]/80 backdrop-blur-md border-b border-white/10" : "bg-transparent"
-        }`}
+        className="fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-[#cfc8bf]/90 via-[#cfc8bf]/60 to-transparent backdrop-blur-md"
       >
         <Container className="flex items-center justify-between py-4">
           <a href="#home" className="flex items-center">
@@ -236,7 +234,7 @@ export default function CaliberSite() {
               <a
                 key={n.href}
                 href={n.href}
-                className="text-sm text-white/80 transition hover:text-white"
+                className="text-lg font-semibold text-black transition hover:text-[#800108]"
               >
                 {n.label}
               </a>
@@ -268,7 +266,7 @@ export default function CaliberSite() {
                     key={n.href}
                     href={n.href}
                     onClick={() => setMenuOpen(false)}
-                    className="rounded-lg px-2 py-2 text-white/80 hover:bg-white/5"
+                    className="rounded-lg px-2 py-2 text-lg font-semibold text-black hover:bg-white/5 hover:text-[#800108]"
                   >
                     {n.label}
                   </a>
