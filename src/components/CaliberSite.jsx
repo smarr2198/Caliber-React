@@ -469,17 +469,54 @@ export default function CaliberSite() {
               </h3>
             </div>
             
-            <div className="relative cursor-pointer" onClick={() => window.open('https://fuel1direct.com/seller/calibermarineandauto-com/', '_blank', 'noopener,noreferrer')}>
-              <iframe
-                src="https://fuel1direct.com/seller/calibermarineandauto-com/"
-                className="w-full h-[800px] rounded-2xl border border-white/10 shadow-2xl pointer-events-none"
-                title="Caliber Marine & Auto Store Preview"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-              />
-              
-              {/* Simple overlay for better integration */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-[#0b0f14]/5 to-transparent pointer-events-none" />
+            <div className="relative cursor-pointer group" onClick={() => window.open('https://fuel1direct.com/seller/calibermarineandauto-com/', '_blank', 'noopener,noreferrer')}>
+              {/* Store Preview Image/Placeholder */}
+              <div className="w-full h-[800px] rounded-2xl border border-white/10 shadow-2xl bg-gradient-to-br from-[#0b0f14] to-[#1a1f24] flex items-center justify-center relative overflow-hidden">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-10 left-10 w-32 h-32 bg-[#800108] rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-10 right-10 w-24 h-24 bg-[#aba296] rounded-full blur-2xl"></div>
+                  <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-[#800108] rounded-full blur-xl"></div>
+                </div>
+                
+                {/* Store Preview Content */}
+                <div className="text-center z-10">
+                  <div className="mb-6">
+                    <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#800108] to-[#aba296] flex items-center justify-center">
+                      <Truck className="h-10 w-10 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-white mb-2">Caliber Marine & Auto Store</h3>
+                    <p className="text-white/70 mb-4">Browse our full catalog of products</p>
+                  </div>
+                  
+                  {/* Product Categories Preview */}
+                  <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
+                    <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+                      <Radio className="h-6 w-6 text-[#aba296] mx-auto mb-2" />
+                      <p className="text-sm text-white/80">Marine Electronics</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+                      <Truck className="h-6 w-6 text-[#800108] mx-auto mb-2" />
+                      <p className="text-sm text-white/80">Automotive Parts</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+                      <Wrench className="h-6 w-6 text-[#aba296] mx-auto mb-2" />
+                      <p className="text-sm text-white/80">Tools & Hardware</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+                      <Boxes className="h-6 w-6 text-[#800108] mx-auto mb-2" />
+                      <p className="text-sm text-white/80">Accessories</p>
+                    </div>
+                  </div>
+                  
+                  {/* Click to Visit Button */}
+                  <div className="mt-8">
+                    <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#800108] to-[#aba296] px-6 py-3 rounded-xl font-semibold text-white group-hover:scale-105 transition-transform duration-200">
+                      Click to Visit Store <ArrowRight className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             
             {/* Fallback link */}
