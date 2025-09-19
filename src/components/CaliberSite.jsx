@@ -443,7 +443,9 @@ export default function CaliberSite() {
         <Container>
           <div className="text-center">
             <h2 className="text-4xl font-semibold mb-4">
-              Shop Thousands of My Products and Services on <GradientText>Fuel 1 Direct</GradientText>
+              Shop Thousands of My Products and Services on <span className="text-[#fff200] font-black text-4xl" style={{
+                textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000`
+              }}>Fuel1Direct.com</span>
             </h2>
             <p className="text-xl text-white/70 mb-8 max-w-3xl mx-auto">
               Browse our extensive catalog of marine electronics, automotive parts, tools, and accessories. 
@@ -462,9 +464,7 @@ export default function CaliberSite() {
           {/* Embedded Store */}
           <div className="mt-16">
             <div className="mb-8 text-center">
-              <h3 className="text-2xl font-semibold mb-4 text-[#800108]" style={{
-                textShadow: `-1px -1px 0 #aba296, 1px -1px 0 #aba296, -1px 1px 0 #aba296, 1px 1px 0 #aba296`
-              }}>
+              <h3 className="text-2xl font-semibold mb-4 text-white">
                 Browse Our Store
               </h3>
             </div>
