@@ -609,21 +609,8 @@ export default function CaliberSite() {
       {/* Gallery / Instagram */}
       <Section id="gallery" className="bg-white/5">
         <Container>
-          <div className="mb-6 flex items-end justify-between">
-            <div>
-              <h2 className="text-3xl font-semibold">Gallery</h2>
-              <p className="mt-2 text-white/70">
-                Hook this to Instagram, or start with recent highlights.
-              </p>
-            </div>
-            <a
-              href="https://instagram.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="hidden rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm hover:bg-white/10 md:block"
-            >
-              Follow us on Instagram
-            </a>
+          <div className="mb-6">
+            <h2 className="text-3xl font-semibold">Gallery</h2>
           </div>
 
           {/* Gallery with actual work photos */}
