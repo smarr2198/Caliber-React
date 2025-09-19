@@ -243,7 +243,7 @@ export default function CaliberSite() {
               href="#contact"
               className="rounded-xl bg-gradient-to-r from-[#800108] to-[#aba296] px-4 py-2 text-sm font-medium shadow hover:opacity-95"
             >
-              Get a Quote
+              Contact Us
             </a>
           </nav>
 
@@ -276,7 +276,7 @@ export default function CaliberSite() {
                   onClick={() => setMenuOpen(false)}
                   className="rounded-lg bg-gradient-to-r from-[#800108] to-[#aba296] px-3 py-2 text-center font-medium"
                 >
-                  Get a Quote
+                  Contact Us
                 </a>
               </div>
             </Container>
