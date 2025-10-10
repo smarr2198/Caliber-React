@@ -708,35 +708,31 @@ export default function CaliberSite() {
               </form>
             </Card>
 
-            <div className="grid gap-4">
-              <Card>
-                <div className="flex items-start gap-3 text-white/80">
-                  <MapPin className="mt-1 h-5 w-5 text-[#aba296]" />
+            <Card className="self-start">
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#aba296]/20">
+                    <MapPin className="h-6 w-6 text-[#aba296]" />
+                  </div>
                   <div>
-                    <p className="font-medium text-white"></p>
-                    <p>Punta Gorda, FL</p>
+                    <p className="text-sm text-white/60">Location</p>
+                    <p className="font-medium text-white">Punta Gorda, FL</p>
                   </div>
                 </div>
-              </Card>
-              <Card>
-                <div className="flex items-start gap-3 text-white/80">
-                  <Phone className="mt-1 h-5 w-5 text-[#800108]" />
+                <div className="h-px bg-white/10"></div>
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#800108]/20">
+                    <Mail className="h-6 w-6 text-[#800108]" />
+                  </div>
                   <div>
-                    <p className="font-medium text-white">Call</p>
-                    <a href="tel:+1-555-000-0000" className="hover:underline">(555) 000-0000</a>
+                    <p className="text-sm text-white/60">Email</p>
+                    <a href="mailto:preservingyourinvestments@gmail.com" className="font-medium text-white hover:text-[#aba296] transition">
+                      preservingyourinvestments@gmail.com
+                    </a>
                   </div>
                 </div>
-              </Card>
-              <Card>
-                <div className="flex items-start gap-3 text-white/80">
-                  <Mail className="mt-1 h-5 w-5 text-[#aba296]" />
-                  <div>
-                    <p className="font-medium text-white">Email</p>
-                    <a href="mailto:preservingyourinvestments@gmail.com" className="hover:underline">preservingyourinvestments@gmail.com</a>
-                  </div>
-                </div>
-              </Card>
-            </div>
+              </div>
+            </Card>
           </div>
         </Container>
       </Section>
