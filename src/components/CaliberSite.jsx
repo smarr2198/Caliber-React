@@ -34,6 +34,9 @@ import gallery6 from "../assets/silverLifted250_shop.jpeg";
 import gallery7 from "../assets/undercarriage.jpeg";
 import gallery8 from "../assets/whiteGMCshop.jpeg";
 
+// Store preview
+import storePreview from "../assets/CaliberF1_Screenshot.jpg";
+
 
 
 // ------------------------------------------------------------
@@ -196,16 +199,31 @@ export default function CaliberSite() {
   const scrolled = useScrollHeader();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleContactSubmit = (e) => {
+  const handleContactSubmit = async (e) => {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const data = Object.fromEntries(form.entries());
-    // Quick-and-safe default: send via mailto. Replace with API/post later.
-    const subject = encodeURIComponent("New Inquiry – Caliber Marine & Automotive");
-    const body = encodeURIComponent(
-      `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nService: ${data.service}\nMessage:\n${data.message}`
-    );
-    window.location.href = `mailto:preservingyourinvestments@gmail.com?subject=${subject}&body=${body}`;
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    // Add Web3Forms access key
+    formData.append("access_key", "a6f3226c-7bb9-4cb0-880d-57195e50da62");
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Thank you for your inquiry! We'll get back to you soon.");
+        form.reset();
+      } else {
+        alert("Oops! Something went wrong. Please try again or email us directly.");
+      }
+    } catch (error) {
+      alert("Oops! Something went wrong. Please try again or email us directly.");
+    }
   };
 
   return (
@@ -467,45 +485,28 @@ export default function CaliberSite() {
               </h3>
             </div>
             
-            <div className="relative cursor-pointer" onClick={() => window.open('https://fuel1direct.com/seller/calibermarineandauto-com/', '_blank', 'noopener,noreferrer')}>
-              <iframe
-                src="https://fuel1direct.com/seller/calibermarineandauto-com/"
-                className="w-full h-[800px] rounded-2xl border border-white/10 shadow-2xl pointer-events-none"
-                title="Caliber Marine & Auto Store Preview"
+            <div 
+              className="relative cursor-pointer group overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+              onClick={() => window.open('https://fuel1direct.com/seller/calibermarineandauto-com/', '_blank', 'noopener,noreferrer')}
+            >
+              {/* Store Screenshot */}
+              <img
+                src={storePreview}
+                alt="Caliber Marine & Auto Store on Fuel 1 Direct"
+                className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-                onError={() => {
-                  // Fallback if iframe fails to load
-                  const iframe = document.querySelector('iframe[title="Caliber Marine & Auto Store Preview"]');
-                  if (iframe) {
-                    iframe.style.display = 'none';
-                    const fallback = document.createElement('div');
-                    fallback.className = 'w-full h-[800px] rounded-2xl border border-white/10 shadow-2xl bg-gradient-to-br from-[#0b0f14] to-[#1a1f24] flex items-center justify-center cursor-pointer';
-                    fallback.innerHTML = `
-                      <div class="text-center">
-                        <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#800108] to-[#aba296] flex items-center justify-center">
-                          <svg class="h-10 w-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-1.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zM17 12V9.5h2.5l2 2.5H17z"/>
-                          </svg>
-                        </div>
-                        <h3 class="text-2xl font-semibold text-white mb-2">Caliber Marine & Auto Store</h3>
-                        <p class="text-white/70 mb-4">Browse our full catalog of products</p>
-                        <div class="inline-flex items-center gap-3 bg-gradient-to-r from-[#800108] to-[#aba296] px-6 py-3 rounded-xl font-semibold text-white">
-                          Click to Visit Store
-                          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
-                          </svg>
-                        </div>
-                      </div>
-                    `;
-                    fallback.onclick = () => window.open('https://fuel1direct.com/seller/calibermarineandauto-com/', '_blank', 'noopener,noreferrer');
-                    iframe.parentNode.insertBefore(fallback, iframe.nextSibling);
-                  }
-                }}
               />
               
-              {/* Simple overlay for better integration */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-[#0b0f14]/5 to-transparent pointer-events-none" />
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-100 scale-95">
+                  <div className="bg-gradient-to-r from-[#800108] to-[#aba296] px-8 py-4 rounded-xl shadow-2xl">
+                    <div className="flex items-center gap-3 text-white font-semibold text-lg">
+                      Click to Visit Store <ArrowRight className="h-6 w-6" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             
             {/* Fallback link */}
@@ -699,11 +700,10 @@ export default function CaliberSite() {
                   <label htmlFor="message" className="mb-1 block text-sm text-white/80">Message</label>
                   <textarea id="message" name="message" rows={5} className="w-full resize-none rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="Tell us about your vehicle/boat, goals, timeline..." />
                 </div>
-                <div className="sm:col-span-2 flex items-center gap-3">
+                <div className="sm:col-span-2">
                   <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#800108] to-[#aba296] px-5 py-3 font-medium hover:opacity-95">
                     Send Inquiry <ArrowRight className="h-5 w-5" />
                   </button>
-                  <span className="text-sm text-white/60">or call <a href="tel:+1-555-000-0000" className="text-white hover:underline">(555) 000-0000</a></span>
                 </div>
               </form>
             </Card>
