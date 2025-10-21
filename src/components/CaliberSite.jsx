@@ -15,7 +15,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-import heroImage from "../assets/caliber-hero.jpg";
+import heroImage from "../assets/caliberHero3.png";
 import aboutImage from "../assets/grayLiftedOutside.jpeg";
 import companyLogo from "../assets/caliberLogo1.png";
 import goodYearLogo from "../assets/partners/goodYearLogo.jpg";
@@ -36,6 +36,13 @@ import gallery8 from "../assets/whiteGMCshop.jpeg";
 
 // Store preview
 import storePreview from "../assets/CaliberF1_Screenshot.jpg";
+
+// Category images
+import liftKitCategory from "../assets/liftKitCategory.jpg";
+import shocksCategory from "../assets/shocksCategory.webp";
+import diffCoverCategory from "../assets/diffCoverCategory.jpg";
+import bumperCategory from "../assets/bumperCategory.jpeg";
+import winchCategory from "../assets/winchCategory.webp";
 
 
 
@@ -238,12 +245,12 @@ export default function CaliberSite() {
       <header
         className="fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-[#cfc8bf]/90 via-[#cfc8bf]/60 to-transparent backdrop-blur-md"
       >
-        <Container className="flex items-center justify-between py-4">
+        <Container className="flex items-center justify-between py-2 sm:py-3 md:py-4">
           <a href="#home" className="flex items-center">
             <img 
               src={companyLogo} 
               alt="Caliber Marine & Automotive" 
-              className="h-28 w-auto rounded-lg border-2 border-white/20 shadow-lg"
+              className="h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto rounded-lg border-2 border-white/20 shadow-lg"
             />
           </a>
 
@@ -302,71 +309,437 @@ export default function CaliberSite() {
         )}
       </header>
 
-      {/* Hero */}
-      <Section id="home" className="pt-36 pb-24">
-        <Container>
-          <div className="grid items-center gap-10 lg:grid-cols-2">
+      {/* Hero - Clean Modern Style */}
+      <Section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image with Blur Effect */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroImage})` }}
+        >
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+
+      {/* Main Content */}
+      <Container className="relative z-10 flex items-center justify-center h-full pt-20 sm:pt-24 md:pt-28 lg:pt-32">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-center max-w-5xl mx-auto px-8"
+        >
+            {/* Main Headline */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-6 sm:mb-8"
             >
-              <Badge>Performance • Precision • Perfection</Badge>
-              <h1 className="text-4xl font-semibold leading-tight sm:text-5xl">
-                Expert <GradientText>Marine</GradientText> &<GradientText> Automotive</GradientText> Repairs
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight mb-4 sm:mb-6 px-2" style={{
+                textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(0,0,0,0.7)`
+              }}>
+                <span className="block mb-2 sm:mb-3">Shop Thousands of My</span>
+                <span className="block mb-2 sm:mb-3">Products and Services on</span>
+                <span className="text-[#fff200] font-black block" style={{
+                  textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(255, 242, 0, 0.5)`
+                }}>
+                  Fuel1Direct.com
+                </span>
               </h1>
-              <p className="max-w-xl text-white/70">
-                From marine detailing and electronics to automotive lift kits and
-                custom upgrades — Caliber brings big-shop capability with
-                boutique-level care.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="#services"
-                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#800108] to-[#aba296] px-5 py-3 font-medium shadow hover:opacity-95"
-                >
-                  Explore Services <ArrowRight className="h-5 w-5" />
-                </a>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 font-medium hover:bg-white/10"
-                >
-                  Book Now
-                </a>
-              </div>
-              <div className="flex items-center gap-6 pt-4 text-white/60">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="h-4 w-4 text-[#aba296]" />
-                  Certified Techs
-                </div>
-                <div className="hidden items-center gap-2 sm:flex">
-                  <ShieldCheck className="h-4 w-4 text-[#800108]" />
-                  Quality Parts
-                </div>
-              </div>
             </motion.div>
 
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-10 px-4"
+            >
+              Browse our extensive catalog of marine electronics, automotive parts, tools, and accessories. 
+              From lift kits to marine supplies, find everything you need for your next project.
+            </motion.p>
+
+            {/* Call to Action Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mb-8 sm:mb-12 flex flex-wrap gap-4 justify-center"
             >
-              <div
-                className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border-white/10 bg-cover bg-center shadow-2xl"
-                style={{ backgroundImage: `url(${heroImage})` }}
+              <a
+                href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 sm:gap-4 bg-gradient-to-r from-[#800108] to-[#aba296] hover:from-[#800108]/90 hover:to-[#aba296]/90 text-white px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-xl font-bold text-base sm:text-lg md:text-xl transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-[#800108]/30"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#0b0f14]/50 via-[#0b0f14]/20 to-transparent" />
-                {/* Optional caption: delete if not needed */}
-                
+                <span className="hidden xs:inline">Visit Fuel 1 Direct Store</span>
+                <span className="xs:hidden">Visit Store</span>
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" />
+              </a>
+              <a
+                href="#categories"
+                className="group inline-flex items-center gap-3 sm:gap-4 bg-white/10 hover:bg-white/20 border-2 border-white/30 hover:border-white/50 backdrop-blur-sm text-white px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-xl font-bold text-base sm:text-lg md:text-xl transition-all duration-300 hover:scale-105 shadow-2xl"
+              >
+                View Categories
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" />
+              </a>
+            </motion.div>
+
+            {/* Trust Indicators */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 text-white/80 px-4"
+            >
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-[#aba296]/20">
+                  <ShieldCheck className="h-5 w-5 sm:h-6 sm:w-6 text-[#aba296]" />
+                </div>
+                <div>
+                  <p className="text-xs sm:text-sm font-semibold text-white">Certified Technicians</p>
+                  <p className="text-xs text-white/60">Expert Service</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-[#800108]/20">
+                  <Wrench className="h-5 w-5 sm:h-6 sm:w-6 text-[#800108]" />
+                </div>
+                <div>
+                  <p className="text-xs sm:text-sm font-semibold text-white">Premium Parts</p>
+                  <p className="text-xs text-white/60">Quality Guaranteed</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </Container>
+
+      </Section>
+
+      {/* Category Catalog */}
+      <Section id="categories" className="bg-white/5 py-16">
+        <Container>
+          <div className="mb-12 text-center">
+            <h2 className="text-4xl font-bold mb-4">
+              Shop By <span className="text-[#800108]" style={{
+                textShadow: `-1px -1px 0 #aba296, 1px -1px 0 #aba296, -1px 1px 0 #aba296, 1px 1px 0 #aba296`
+              }}>Category</span>
+            </h2>
+            <p className="text-white/70 text-lg">Explore our most popular product categories</p>
+          </div>
+
+          {/* Mobile: 2 cols continuous, Desktop: 3 cols first row + 2 cols centered second row */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:hidden gap-4 sm:gap-6">
+            {/* Lift Kits */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
+                <div className="aspect-square overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4 bg-white">
+                  <img 
+                    src={liftKitCategory} 
+                    alt="Lift Kits" 
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Lift Kits</h3>
+                <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
+                  Professional suspension and leveling kits for all truck models
+                </p>
+                <a
+                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
+                >
+                  Shop Now <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
+                </a>
+              </Card>
+            </motion.div>
+
+            {/* Winches */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
+                <div className="aspect-square overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4 bg-white">
+                  <img 
+                    src={winchCategory} 
+                    alt="Winches" 
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Winches</h3>
+                <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
+                  Heavy-duty winches for recovery and off-road applications
+                </p>
+                <a
+                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
+                >
+                  Shop Now <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
+                </a>
+              </Card>
+            </motion.div>
+
+            {/* Bumpers */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
+                <div className="aspect-square overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4 bg-white">
+                  <img 
+                    src={bumperCategory} 
+                    alt="Bumpers" 
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  />
+              </div>
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Bumpers</h3>
+                <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
+                  Custom front and rear bumpers for style and protection
+                </p>
+                <a
+                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
+                >
+                  Shop Now <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
+                </a>
+              </Card>
+            </motion.div>
+
+            {/* Shocks */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
+                <div className="aspect-square overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4 bg-white">
+                  <img 
+                    src={shocksCategory} 
+                    alt="Shocks" 
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Shocks</h3>
+                <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
+                  High-performance shocks and struts for optimal ride quality
+                </p>
+                <a
+                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
+                >
+                  Shop Now <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
+                </a>
+              </Card>
+            </motion.div>
+
+            {/* Differential Covers */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
+                <div className="aspect-square overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4 bg-white">
+                  <img 
+                    src={diffCoverCategory} 
+                    alt="Differential Covers" 
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Differential Covers</h3>
+                <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
+                  Protective and stylish differential covers for heavy-duty use
+                </p>
+                <a
+                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
+                >
+                  Shop Now <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
+                </a>
+              </Card>
+            </motion.div>
               </div>
 
+          {/* Desktop Layout - 3 cols + 2 cols centered */}
+          <div className="hidden lg:flex flex-col gap-8">
+            {/* First Row - 3 cards */}
+            <div className="grid grid-cols-3 gap-8">
+              {/* Lift Kits */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
+                  <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-white">
+                    <img 
+                      src={liftKitCategory} 
+                      alt="Lift Kits" 
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Lift Kits</h3>
+                  <p className="text-white/70 text-sm mb-4">
+                    Professional suspension and leveling kits for all truck models
+                  </p>
+                  <a
+                    href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
+                  >
+                    Shop Now <ArrowRight className="h-4 w-4" />
+                  </a>
+                </Card>
             </motion.div>
+
+              {/* Winches */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
+                  <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-white">
+                    <img 
+                      src={winchCategory} 
+                      alt="Winches" 
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Winches</h3>
+                  <p className="text-white/70 text-sm mb-4">
+                    Heavy-duty winches for recovery and off-road applications
+                  </p>
+                  <a
+                    href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
+                  >
+                    Shop Now <ArrowRight className="h-4 w-4" />
+                  </a>
+                </Card>
+            </motion.div>
+
+              {/* Bumpers */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
+                  <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-white">
+                    <img 
+                      src={bumperCategory} 
+                      alt="Bumpers" 
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Bumpers</h3>
+                  <p className="text-white/70 text-sm mb-4">
+                    Custom front and rear bumpers for style and protection
+                  </p>
+                  <a
+                    href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
+                  >
+                    Shop Now <ArrowRight className="h-4 w-4" />
+                  </a>
+                </Card>
+            </motion.div>
+              </div>
+
+            {/* Second Row - 2 cards centered */}
+            <div className="grid grid-cols-2 gap-8 max-w-3xl mx-auto">
+              {/* Shocks */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
+                  <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-white">
+                    <img 
+                      src={shocksCategory} 
+                      alt="Shocks" 
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Shocks</h3>
+                  <p className="text-white/70 text-sm mb-4">
+                    High-performance shocks and struts for optimal ride quality
+                  </p>
+                  <a
+                    href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
+                  >
+                    Shop Now <ArrowRight className="h-4 w-4" />
+                  </a>
+                </Card>
+            </motion.div>
+
+              {/* Differential Covers */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
+                  <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-white">
+                    <img 
+                      src={diffCoverCategory} 
+                      alt="Differential Covers" 
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-white">Differential Covers</h3>
+                  <p className="text-white/70 text-sm mb-4">
+                    Protective and stylish differential covers for heavy-duty use
+                  </p>
+                  <a
+                    href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
+                  >
+                    Shop Now <ArrowRight className="h-4 w-4" />
+                  </a>
+                </Card>
+              </motion.div>
+            </div>
           </div>
         </Container>
       </Section>
-
-      {/* Services */}
       <Section id="services" className="bg-white/5">
         <Container>
           <div className="mb-10 flex items-end justify-between gap-4">
@@ -381,7 +754,7 @@ export default function CaliberSite() {
             </a>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">
             {SERVICES.map((s) => (
               <Card key={s.key}>
                 <div className="flex items-start justify-between gap-6">
@@ -408,11 +781,11 @@ export default function CaliberSite() {
         <Container>
           <div className="mb-10 flex items-end justify-between gap-4">
             <div>
-              <h2 className="text-3xl font-semibold">Featured Packages</h2>
-              <p className="mt-2 text-white/70">
-                Popular bundles you can promote or link to your store.
-              </p>
-            </div>
+            <h2 className="text-3xl font-semibold">Featured Packages</h2>
+            <p className="mt-2 text-white/70">
+              Popular bundles you can promote or link to your store.
+            </p>
+          </div>
             <a 
               href="https://fuel1direct.com/seller/calibermarineandauto-com/" 
               target="_blank" 
@@ -422,7 +795,7 @@ export default function CaliberSite() {
               Shop All Products
             </a>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {PACKAGES.map((p) => (
               <Card key={p.name} className="flex flex-col">
                 <div className="mb-3">
@@ -459,7 +832,7 @@ export default function CaliberSite() {
         <Container>
           <div className="text-center">
             <h2 className="text-4xl font-semibold mb-4">
-              Shop Thousands of My Products and Services on <span className="text-[#fff200] font-black text-4xl" style={{
+              View our catalog of over 50,000+ unique products on <span className="text-[#fff200] font-black text-4xl" style={{
                 textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000`
               }}>Fuel1Direct.com</span>
             </h2>
@@ -547,18 +920,6 @@ export default function CaliberSite() {
               <p className="mt-4 text-white/70">
                 <b>Our Mission:</b> "Preserving your marine and automotive investments—with faith, precision, and integrity." 
               </p>
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <Card>
-                  <p className="text-sm text-white/70">
-                    <span className="font-semibold text-white">Certified & Insured.</span> ASE/MECP-trained techs and marine specialists.
-                  </p>
-                </Card>
-                <Card>
-                  <p className="text-sm text-white/70">
-                    <span className="font-semibold text-white">Transparent Pricing.</span> Estimates that make sense, no surprises.
-                  </p>
-                </Card>
-              </div>
             </div>
             <div className="order-1 lg:order-2">
               <div
@@ -611,7 +972,7 @@ export default function CaliberSite() {
       <Section id="gallery" className="bg-white/5">
         <Container>
           <div className="mb-6">
-            <h2 className="text-3xl font-semibold">Gallery</h2>
+              <h2 className="text-3xl font-semibold">Gallery</h2>
           </div>
 
           {/* Gallery with actual work photos */}
@@ -730,9 +1091,9 @@ export default function CaliberSite() {
                       preservingyourinvestments@gmail.com
                     </a>
                   </div>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
           </div>
         </Container>
       </Section>
