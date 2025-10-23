@@ -55,7 +55,6 @@ import winchCategory from "../assets/winchCategory.webp";
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
-  { label: "Packages", href: "#packages" },
   { label: "Shop", href: "#shop" },
   { label: "About", href: "#about" },
   { label: "Partners", href: "#partners" },
@@ -108,37 +107,6 @@ const SERVICES = [
       "Train Horns",
       "Tonneau Covers",
     ],
-  },
-];
-
-const PACKAGES = [
-  {
-    name: "Marine Shine+",
-    price: "$399",
-    description:
-      "Full wash, gelcoat decon, single-stage polish, interior wipe-down, glass & metal brightening.",
-    perks: ["2–3 hr turnaround", "Lake-ready finish", "UV sealant"],
-  },
-  {
-    name: "Street Style Lift",
-    price: "$1,899",
-    description:
-      "2–3in suspension lift kit with alignment, hardware, and post-install check.",
-    perks: ["Warranty friendly", "Pro alignment", "Ride quality focused"],
-  },
-  {
-    name: "Sound & Lights",
-    price: "$999",
-    description:
-      "4-speaker upgrade with compact amp and RGB underglow/ courtesy lighting.",
-    perks: ["Clean wiring", "App control", "Night visibility"],
-  },
-  {
-    name: "Showroom Detail",
-    price: "$299",
-    description:
-      "Interior steam, shampoo, leather conditioning, exterior decon + sealant.",
-    perks: ["Pet-safe", "Odor neutralizer", "Streak-free glass"],
   },
 ];
 
@@ -449,7 +417,7 @@ export default function CaliberSite() {
                   Professional suspension and leveling kits for all truck models
                 </p>
                 <a
-                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                  href="https://fuel1direct.com/product-category/trucks-lift-kits-wheel-packages-customization/suspension-lift-kits-trucks/lift-kits-truck/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
@@ -539,7 +507,7 @@ export default function CaliberSite() {
                   High-performance shocks and struts for optimal ride quality
                 </p>
                 <a
-                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                  href="https://fuel1direct.com/product-category/trucks-lift-kits-wheel-packages-customization/suspension-lift-kits-trucks/shocks-struts/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
@@ -604,7 +572,7 @@ export default function CaliberSite() {
                     Professional suspension and leveling kits for all truck models
                   </p>
                   <a
-                    href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                    href="https://fuel1direct.com/product-category/trucks-lift-kits-wheel-packages-customization/suspension-lift-kits-trucks/lift-kits-truck/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
@@ -697,7 +665,7 @@ export default function CaliberSite() {
                     High-performance shocks and struts for optimal ride quality
                   </p>
                   <a
-                    href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                    href="https://fuel1direct.com/product-category/trucks-lift-kits-wheel-packages-customization/suspension-lift-kits-trucks/shocks-struts/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
@@ -740,6 +708,82 @@ export default function CaliberSite() {
           </div>
         </Container>
       </Section>
+
+      {/* Contact */}
+      <Section id="contact">
+        <Container>
+          <div className="mb-10">
+            <h2 className="text-3xl font-semibold">Need Assistance Finding What Parts Are Best for You?</h2>
+            <p className="mt-2 text-white/70">Tell us about your vehicle and what you want done</p>
+          </div>
+          <div className="grid gap-8 lg:grid-cols-3">
+            <Card className="lg:col-span-2">
+              <form onSubmit={handleContactSubmit} className="grid gap-4 sm:grid-cols-2">
+                <div className="sm:col-span-1">
+                  <label htmlFor="name" className="mb-1 block text-sm text-white/80">Full Name</label>
+                  <input id="name" name="name" required className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="Jane Doe" />
+                </div>
+                <div className="sm:col-span-1">
+                  <label htmlFor="email" className="mb-1 block text-sm text-white/80">Email</label>
+                  <input id="email" name="email" type="email" required className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="you@example.com" />
+                </div>
+                <div className="sm:col-span-1">
+                  <label htmlFor="phone" className="mb-1 block text-sm text-white/80">Phone</label>
+                  <input id="phone" name="phone" className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="(555) 000-0000" />
+                </div>
+                <div className="sm:col-span-1">
+                  <label htmlFor="vehicle_make" className="mb-1 block text-sm text-white/80">Vehicle Make</label>
+                  <input id="vehicle_make" name="vehicle_make" required className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="Ford, Chevy, Toyota, etc." />
+                </div>
+                <div className="sm:col-span-1">
+                  <label htmlFor="vehicle_model" className="mb-1 block text-sm text-white/80">Vehicle Model</label>
+                  <input id="vehicle_model" name="vehicle_model" required className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="F-150, Silverado, Tacoma, etc." />
+                </div>
+                <div className="sm:col-span-1">
+                  <label htmlFor="vehicle_year" className="mb-1 block text-sm text-white/80">Vehicle Year</label>
+                  <input id="vehicle_year" name="vehicle_year" type="number" required min="1990" max="2025" className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="2020" />
+                </div>
+                <div className="sm:col-span-2">
+                  <label htmlFor="work_description" className="mb-1 block text-sm text-white/80">What work do you want done?</label>
+                  <textarea id="work_description" name="work_description" rows={5} required className="w-full resize-none rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="Describe the modifications, repairs, or upgrades you want for your vehicle..." />
+                </div>
+                <div className="sm:col-span-2">
+                  <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#800108] to-[#aba296] px-5 py-3 font-medium hover:opacity-95">
+                    Get Parts Recommendation <ArrowRight className="h-5 w-5" />
+                  </button>
+                </div>
+              </form>
+            </Card>
+
+            <Card className="self-start">
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#aba296]/20">
+                    <MapPin className="h-6 w-6 text-[#aba296]" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-white/60">Location</p>
+                    <p className="font-medium text-white">Punta Gorda, FL</p>
+                  </div>
+                </div>
+                <div className="h-px bg-white/10"></div>
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#800108]/20">
+                    <Mail className="h-6 w-6 text-[#800108]" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-white/60">Email</p>
+                    <a href="mailto:preservingyourinvestments@gmail.com" className="font-medium text-white hover:text-[#aba296] transition">
+                      preservingyourinvestments@gmail.com
+                    </a>
+                  </div>
+                  </div>
+                </div>
+              </Card>
+          </div>
+        </Container>
+      </Section>
+
       <Section id="services" className="bg-white/5">
         <Container>
           <div className="mb-10 flex items-end justify-between gap-4">
@@ -777,56 +821,6 @@ export default function CaliberSite() {
       </Section>
 
       {/* Packages / Products */}
-      <Section id="packages">
-        <Container>
-          <div className="mb-10 flex items-end justify-between gap-4">
-            <div>
-            <h2 className="text-3xl font-semibold">Featured Packages</h2>
-            <p className="mt-2 text-white/70">
-              Popular bundles you can promote or link to your store.
-            </p>
-          </div>
-            <a 
-              href="https://fuel1direct.com/seller/calibermarineandauto-com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hidden rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm hover:bg-white/10 md:block"
-            >
-              Shop All Products
-            </a>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {PACKAGES.map((p) => (
-              <Card key={p.name} className="flex flex-col">
-                <div className="mb-3">
-                  <h3 className="text-lg font-semibold">{p.name}</h3>
-                </div>
-                <p className="text-white/70">{p.description}</p>
-                <ul className="mt-4 space-y-2 text-sm text-white/80">
-                  {p.perks.map((perk) => (
-                    <li key={perk} className="flex items-center gap-2">
-                      <Boxes className="h-4 w-4 text-[#aba296]" /> {perk}
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            ))}
-          </div>
-          
-          {/* Mobile Shop All Products Button */}
-          <div className="mt-8 text-center md:hidden">
-            <a 
-              href="https://fuel1direct.com/seller/calibermarineandauto-com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#800108] to-[#aba296] px-6 py-3 font-medium shadow hover:opacity-95"
-            >
-              Shop All Products <ArrowRight className="h-5 w-5" />
-            </a>
-          </div>
-        </Container>
-      </Section>
-
       {/* Shop */}
       <Section id="shop" className="bg-white/5">
         <Container>
@@ -1004,97 +998,6 @@ export default function CaliberSite() {
               />
             </div>
           */}
-        </Container>
-      </Section>
-
-      {/* Contact */}
-      <Section id="contact">
-        <Container>
-          <div className="mb-10">
-            <h2 className="text-3xl font-semibold">Contact Us</h2>
-            <p className="mt-2 text-white/70">Tell us about your build or service needs.</p>
-          </div>
-          <div className="grid gap-8 lg:grid-cols-3">
-            <Card className="lg:col-span-2">
-              <form onSubmit={handleContactSubmit} className="grid gap-4 sm:grid-cols-2">
-                <div className="sm:col-span-1">
-                  <label htmlFor="name" className="mb-1 block text-sm text-white/80">Full Name</label>
-                  <input id="name" name="name" required className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="Jane Doe" />
-                </div>
-                <div className="sm:col-span-1">
-                  <label htmlFor="email" className="mb-1 block text-sm text-white/80">Email</label>
-                  <input id="email" name="email" type="email" required className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="you@example.com" />
-                </div>
-                <div className="sm:col-span-1">
-                  <label htmlFor="phone" className="mb-1 block text-sm text-white/80">Phone</label>
-                  <input id="phone" name="phone" className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="(555) 000-0000" />
-                </div>
-                <div className="sm:col-span-1">
-                  <label htmlFor="service" className="mb-1 block text-sm text-white/80">Service</label>
-                  <select 
-                    id="service" 
-                    name="service" 
-                    className="w-full rounded-xl border border-white/15 bg-[#212529] px-3 py-2 outline-none text-white"
-                    style={{
-                      backgroundColor: '#212529',
-                      color: 'white'
-                    }}
-                  >
-                    {SERVICES.map((s) => (
-                      <option 
-                        key={s.key} 
-                        value={s.title} 
-                        style={{ backgroundColor: '#212529', color: 'white' }}
-                      >
-                        {s.title}
-                      </option>
-                    ))}
-                    <option 
-                      value="General" 
-                      style={{ backgroundColor: '#212529', color: 'white' }}
-                    >
-                      General
-                    </option>
-                  </select>
-                </div>
-                <div className="sm:col-span-2">
-                  <label htmlFor="message" className="mb-1 block text-sm text-white/80">Message</label>
-                  <textarea id="message" name="message" rows={5} className="w-full resize-none rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="Tell us about your vehicle/boat, goals, timeline..." />
-                </div>
-                <div className="sm:col-span-2">
-                  <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#800108] to-[#aba296] px-5 py-3 font-medium hover:opacity-95">
-                    Send Inquiry <ArrowRight className="h-5 w-5" />
-                  </button>
-                </div>
-              </form>
-            </Card>
-
-            <Card className="self-start">
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#aba296]/20">
-                    <MapPin className="h-6 w-6 text-[#aba296]" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-white/60">Location</p>
-                    <p className="font-medium text-white">Punta Gorda, FL</p>
-                  </div>
-                </div>
-                <div className="h-px bg-white/10"></div>
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#800108]/20">
-                    <Mail className="h-6 w-6 text-[#800108]" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-white/60">Email</p>
-                    <a href="mailto:preservingyourinvestments@gmail.com" className="font-medium text-white hover:text-[#aba296] transition">
-                      preservingyourinvestments@gmail.com
-                    </a>
-                  </div>
-                  </div>
-                </div>
-              </Card>
-          </div>
         </Container>
       </Section>
 
