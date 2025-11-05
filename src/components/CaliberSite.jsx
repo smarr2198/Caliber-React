@@ -44,6 +44,9 @@ import diffCoverCategory from "../assets/diffCoverCategory.jpg";
 import bumperCategory from "../assets/bumperCategory.jpeg";
 import winchCategory from "../assets/winchCategory.webp";
 
+// Hero logo
+import heroLogo from "../assets/caliberLogoWebTPfin.png";
+
 
 
 // ------------------------------------------------------------
@@ -305,9 +308,9 @@ export default function CaliberSite() {
               <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight mb-4 sm:mb-6 px-2" style={{
                 textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(0,0,0,0.7)`
               }}>
-                <span className="block mb-2 sm:mb-3">Shop Thousands of My</span>
+                <span className="block mb-0 sm:mb-0">Shop Thousands of <span className="text-[#7a0206] font-black text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl inline-block" style={{ fontWeight: 900, fontFamily: "'Black Ops One', 'Rubik Mono One', 'Alfa Slab One', 'Ultra', 'Impact', sans-serif", letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: '1.2', verticalAlign: 'middle', margin: '0.1em 0.2em', textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(122, 2, 6, 0.5)` }}>CALIBER</span></span>
                 <span className="block mb-2 sm:mb-3">Products and Services on</span>
-                <span className="text-[#fff200] font-black block" style={{
+                <span className="text-[#fff200] font-black block text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl" style={{
                   textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(255, 242, 0, 0.5)`
                 }}>
                   Fuel1Direct.com
@@ -417,7 +420,7 @@ export default function CaliberSite() {
                   Professional suspension and leveling kits for all truck models
                 </p>
                 <a
-                  href="https://fuel1direct.com/product-category/trucks-lift-kits-wheel-packages-customization/suspension-lift-kits-trucks/lift-kits-truck/"
+                  href="https://fuel1direct.com/seller/calibermarineandauto-com/section/4673/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
@@ -447,7 +450,7 @@ export default function CaliberSite() {
                   Heavy-duty winches for recovery and off-road applications
                 </p>
                 <a
-                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                  href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5597/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
@@ -472,12 +475,12 @@ export default function CaliberSite() {
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
               </div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Bumpers</h3>
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Body Kits, Bumpers, & Spoilers</h3>
                 <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
                   Custom front and rear bumpers for style and protection
                 </p>
                 <a
-                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                  href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5595/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
@@ -507,7 +510,7 @@ export default function CaliberSite() {
                   High-performance shocks and struts for optimal ride quality
                 </p>
                 <a
-                  href="https://fuel1direct.com/product-category/trucks-lift-kits-wheel-packages-customization/suspension-lift-kits-trucks/shocks-struts/"
+                  href="https://fuel1direct.com/seller/calibermarineandauto-com/section/4674/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
@@ -532,12 +535,12 @@ export default function CaliberSite() {
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Differential Covers</h3>
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Steering, Axle & Rigging Systems</h3>
                 <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
                   Protective and stylish differential covers for heavy-duty use
                 </p>
                 <a
-                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                  href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5392/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
@@ -572,7 +575,7 @@ export default function CaliberSite() {
                     Professional suspension and leveling kits for all truck models
                   </p>
                   <a
-                    href="https://fuel1direct.com/product-category/trucks-lift-kits-wheel-packages-customization/suspension-lift-kits-trucks/lift-kits-truck/"
+                    href="https://fuel1direct.com/seller/calibermarineandauto-com/section/4673/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
@@ -602,7 +605,7 @@ export default function CaliberSite() {
                     Heavy-duty winches for recovery and off-road applications
                   </p>
                   <a
-                    href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                    href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5597/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
@@ -627,12 +630,12 @@ export default function CaliberSite() {
                       className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Bumpers</h3>
+                  <h3 className="text-xl font-bold mb-2 text-white">Body Kits, Bumpers, & Spoilers</h3>
                   <p className="text-white/70 text-sm mb-4">
                     Custom front and rear bumpers for style and protection
                   </p>
                   <a
-                    href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                    href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5595/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
@@ -665,7 +668,7 @@ export default function CaliberSite() {
                     High-performance shocks and struts for optimal ride quality
                   </p>
                   <a
-                    href="https://fuel1direct.com/product-category/trucks-lift-kits-wheel-packages-customization/suspension-lift-kits-trucks/shocks-struts/"
+                    href="https://fuel1direct.com/seller/calibermarineandauto-com/section/4674/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
@@ -690,12 +693,12 @@ export default function CaliberSite() {
                       className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Differential Covers</h3>
+                  <h3 className="text-xl font-bold mb-2 text-white">Steering, Axle & Rigging Systems</h3>
                   <p className="text-white/70 text-sm mb-4">
                     Protective and stylish differential covers for heavy-duty use
                   </p>
                   <a
-                    href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                    href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5392/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
@@ -821,7 +824,8 @@ export default function CaliberSite() {
       </Section>
 
       {/* Packages / Products */}
-      {/* Shop */}
+      {/* Shop - Hidden per user request */}
+      {/* 
       <Section id="shop" className="bg-white/5">
         <Container>
           <div className="text-center">
@@ -844,7 +848,6 @@ export default function CaliberSite() {
             </a>
           </div>
           
-          {/* Embedded Store */}
           <div className="mt-16">
             <div className="mb-8 text-center">
               <h3 className="text-2xl font-semibold mb-4 text-white">
@@ -856,7 +859,6 @@ export default function CaliberSite() {
               className="relative cursor-pointer group overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
               onClick={() => window.open('https://fuel1direct.com/seller/calibermarineandauto-com/', '_blank', 'noopener,noreferrer')}
             >
-              {/* Store Screenshot */}
               <img
                 src={storePreview}
                 alt="Caliber Marine & Auto Store on Fuel 1 Direct"
@@ -864,7 +866,6 @@ export default function CaliberSite() {
                 loading="lazy"
               />
               
-              {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-100 scale-95">
                   <div className="bg-gradient-to-r from-[#800108] to-[#aba296] px-8 py-4 rounded-xl shadow-2xl">
@@ -876,7 +877,6 @@ export default function CaliberSite() {
               </div>
             </div>
             
-            {/* Fallback link */}
             <div className="mt-6 text-center">
               <p className="text-white/60 text-sm mb-4">
                 Having trouble viewing the store? 
@@ -893,6 +893,7 @@ export default function CaliberSite() {
           </div>
         </Container>
       </Section>
+      */}
 
       {/* About */}
       <Section id="about" className="bg-white/5">
