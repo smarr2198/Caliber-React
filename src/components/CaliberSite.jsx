@@ -214,9 +214,9 @@ export default function CaliberSite() {
 
       {/* Header */}
       <header
-        className="fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-[#cfc8bf]/90 via-[#cfc8bf]/60 to-transparent backdrop-blur-md"
+        className="relative z-50 bg-gradient-to-b from-[#cfc8bf]/90 via-[#cfc8bf]/60 to-transparent backdrop-blur-md"
       >
-        <Container className="flex items-center justify-between py-2 sm:py-3 md:py-4">
+        <Container className="flex items-center justify-between py-1 sm:py-2 md:py-3">
           <a href="#home" className="flex items-center">
             <img 
               src={companyLogo} 
@@ -281,7 +281,10 @@ export default function CaliberSite() {
       </header>
 
       {/* Hero - Clean Modern Style */}
-      <Section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-0">
+      <Section
+        id="home"
+        className="relative flex items-start justify-center overflow-hidden min-h-screen pt-8 sm:pt-10 md:pt-12 lg:pt-14 xl:pt-16 pb-10 sm:pb-12 md:pb-14"
+      >
         {/* Background Image with Blur Effect */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -291,7 +294,7 @@ export default function CaliberSite() {
         </div>
 
       {/* Main Content */}
-      <Container className="relative z-10 flex items-center justify-center min-h-screen pt-24 sm:pt-28 md:pt-32 lg:pt-36 xl:pt-40 pb-12 sm:pb-14 md:pb-16">
+      <Container className="relative z-10 flex flex-col items-center justify-start w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -305,12 +308,13 @@ export default function CaliberSite() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mb-6 sm:mb-8"
             >
-              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight mb-4 sm:mb-6 px-2" style={{
+              <h1 className="font-black text-white leading-tight mb-4 sm:mb-6 px-2 text-[clamp(1.75rem,4vw,4.5rem)]" style={{
                 textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(0,0,0,0.7)`
               }}>
-                <span className="block mb-0 sm:mb-0">Shop Thousands of <span className="text-[#7a0206] font-black text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl inline-block" style={{ fontWeight: 900, fontFamily: "'Black Ops One', 'Rubik Mono One', 'Alfa Slab One', 'Ultra', 'Impact', sans-serif", letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: '1.2', verticalAlign: 'middle', margin: '0.1em 0.2em', textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(122, 2, 6, 0.5)` }}>CALIBER</span></span>
+                <span className="block mb-0 sm:mb-0">Shop Thousands of <span className="text-[#7a0206] font-black inline-block" style={{ fontSize: 'clamp(2.5rem,7vw,6rem)', fontWeight: 900, fontFamily: "'Black Ops One', 'Rubik Mono One', 'Alfa Slab One', 'Ultra', 'Impact', sans-serif", letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: '1.2', verticalAlign: 'middle', margin: '0.1em 0.2em', textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(122, 2, 6, 0.5)` }}>CALIBER</span></span>
                 <span className="block mb-2 sm:mb-3">Products and Services on</span>
-                <span className="text-[#fff200] font-black block text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl" style={{
+                <span className="text-[#fff200] font-black block" style={{
+                  fontSize: 'clamp(1.5rem,4.5vw,3.5rem)',
                   textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(255, 242, 0, 0.5)`
                 }}>
                   Fuel1Direct.com
@@ -323,7 +327,7 @@ export default function CaliberSite() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-10 px-4"
+              className="text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-10 px-4 text-[clamp(1rem,2.5vw,1.5rem)]"
             >
               Browse our extensive catalog of marine electronics, automotive parts, tools, and accessories. 
               From lift kits to marine supplies, find everything you need for your next project.
