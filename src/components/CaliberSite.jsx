@@ -281,7 +281,7 @@ export default function CaliberSite() {
       </header>
 
       {/* Hero - Clean Modern Style */}
-      <Section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+      <Section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-0">
         {/* Background Image with Blur Effect */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -291,7 +291,7 @@ export default function CaliberSite() {
         </div>
 
       {/* Main Content */}
-      <Container className="relative z-10 flex items-center justify-center h-full pt-20 sm:pt-24 md:pt-28 lg:pt-32">
+      <Container className="relative z-10 flex items-center justify-center min-h-screen pt-24 sm:pt-28 md:pt-32 lg:pt-36 xl:pt-40 pb-12 sm:pb-14 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
