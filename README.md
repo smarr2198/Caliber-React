@@ -1,4 +1,4 @@
-# Caliber Marine & Automotive — React + Vite + Tailwind
+# Caliber Performance LLC — React + Vite + Tailwind
 
 Heavy‑duty dark theme with brushed‑metal dividers.
 

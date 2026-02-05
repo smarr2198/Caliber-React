@@ -17,7 +17,7 @@ import {
 
 import heroImage from "../assets/caliberHero3.png";
 import aboutImage from "../assets/grayLiftedOutside.jpeg";
-import companyLogo from "../assets/caliberLogo1.png";
+import companyLogo from "../assets/caliberLogo-simpleThin.png";
 import goodYearLogo from "../assets/partners/goodYearLogo.jpg";
 import firestoneLogo from "../assets/partners/firestoneLogo.jpg";
 import bfGoodrichLogo from "../assets/partners/bfGoodrichLogo.jpg";
@@ -50,7 +50,7 @@ import heroLogo from "../assets/caliberLogoWebTPfin.png";
 
 
 // ------------------------------------------------------------
-// Caliber Marine & Automotive — Single-file React Site
+// Caliber Performance LLC — Single-file React Site
 // Dark theme with blue/red accents. Responsive, accessible, modern.
 // Sections: Hero, Services, Packages, About, Partners, Gallery, Contact.
 // ------------------------------------------------------------
@@ -182,8 +182,8 @@ export default function CaliberSite() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     
-    // Add Web3Forms access key
-    formData.append("access_key", "a6f3226c-7bb9-4cb0-880d-57195e50da62");
+    // Add Web3Forms access key (new form)
+    formData.append("access_key", "39e2047c-0c0a-48bc-ba69-71dc9a3961b4");
     
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -220,7 +220,7 @@ export default function CaliberSite() {
           <a href="#home" className="flex items-center">
             <img 
               src={companyLogo} 
-              alt="Caliber Marine & Automotive" 
+              alt="Caliber Performance LLC" 
               className="h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto rounded-lg border-2 border-white/20 shadow-lg"
             />
           </a>
@@ -780,8 +780,8 @@ export default function CaliberSite() {
                   </div>
                   <div>
                     <p className="text-sm text-white/60">Email</p>
-                    <a href="mailto:preservingyourinvestments@gmail.com" className="font-medium text-white hover:text-[#aba296] transition">
-                      preservingyourinvestments@gmail.com
+                    <a href="mailto:info@caliberperformanceusa.com" className="font-medium text-white hover:text-[#aba296] transition">
+                      info@caliberperformanceusa.com
                     </a>
                   </div>
                   </div>
@@ -865,7 +865,7 @@ export default function CaliberSite() {
             >
               <img
                 src={storePreview}
-                alt="Caliber Marine & Auto Store on Fuel 1 Direct"
+                alt="Caliber Performance LLC Store on Fuel 1 Direct"
                 className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
@@ -1010,7 +1010,7 @@ export default function CaliberSite() {
       <footer className="mt-20 border-t border-white/10 bg-black/20">
         <Container>
           <div className="flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
-            <p className="text-sm text-white/60">© {new Date().getFullYear()} Caliber Marine & Automotive. All rights reserved.</p>
+            <p className="text-sm text-white/60">© {new Date().getFullYear()} Caliber Performance LLC. All rights reserved.</p>
             <div className="flex items-center gap-4 text-white/60">
               <a href="#privacy" className="hover:text-white">Privacy</a>
               <a href="#terms" className="hover:text-white">Terms</a>
