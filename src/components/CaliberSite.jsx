@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 import heroImage from "../assets/caliberHero3.png";
-import aboutImage from "../assets/grayLiftedOutside.jpeg";
+import aboutImage from "../assets/newAboutUs.jpg";
 import companyLogo from "../assets/caliberLogo-simpleThin.png";
 import goodYearLogo from "../assets/partners/goodYearLogo.jpg";
 import firestoneLogo from "../assets/partners/firestoneLogo.jpg";
@@ -33,6 +33,10 @@ import gallery5 from "../assets/liftKit.jpeg";
 import gallery6 from "../assets/silverLifted250_shop.jpeg";
 import gallery7 from "../assets/undercarriage.jpeg";
 import gallery8 from "../assets/whiteGMCshop.jpeg";
+import gallery9 from "../assets/newGallery1.jpg";
+import gallery10 from "../assets/newGallery2.jpg";
+import gallery11 from "../assets/newGallery3.jpg";
+import gallery12 from "../assets/newGallery4.jpg";
 
 // Store preview
 import storePreview from "../assets/CaliberF1_Screenshot.jpg";
@@ -122,14 +126,18 @@ const PARTNERS = [
 ];
 
 const GALLERY_IMAGES = [
-  { id: 1, src: gallery1, alt: "Black GMC truck without tires" },
-  { id: 2, src: gallery2, alt: "Black GMC shop work" },
-  { id: 3, src: gallery3, alt: "Black lifted 350 truck" },
-  { id: 4, src: gallery4, alt: "Close up lift kit installation" },
-  { id: 5, src: gallery5, alt: "Lift kit components" },
-  { id: 6, src: gallery6, alt: "Silver lifted 250 in shop" },
-  { id: 7, src: gallery7, alt: "Undercarriage work" },
-  { id: 8, src: gallery8, alt: "White GMC shop work" },
+  { id: 1, src: gallery9, alt: "Gallery" },
+  { id: 2, src: gallery10, alt: "Gallery" },
+  { id: 3, src: gallery11, alt: "Gallery" },
+  { id: 4, src: gallery12, alt: "Gallery" },
+  { id: 5, src: gallery1, alt: "Black GMC truck without tires" },
+  { id: 6, src: gallery2, alt: "Black GMC shop work" },
+  { id: 7, src: gallery3, alt: "Black lifted 350 truck" },
+  { id: 8, src: gallery4, alt: "Close up lift kit installation" },
+  { id: 9, src: gallery5, alt: "Lift kit components" },
+  { id: 10, src: gallery6, alt: "Silver lifted 250 in shop" },
+  { id: 11, src: gallery7, alt: "Undercarriage work" },
+  { id: 12, src: gallery8, alt: "White GMC shop work" },
 ];
 
 function useScrollHeader() {
