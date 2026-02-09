@@ -18,6 +18,7 @@ import {
 import heroImage from "../assets/caliberHero3.png";
 import aboutImage from "../assets/newAboutUs.jpg";
 import companyLogo from "../assets/caliberLogo-simpleThin.png";
+import roughCountryLogo from "../assets/partners/roughCountry.jpg";
 import goodYearLogo from "../assets/partners/goodYearLogo.jpg";
 import firestoneLogo from "../assets/partners/firestoneLogo.jpg";
 import bfGoodrichLogo from "../assets/partners/bfGoodrichLogo.jpg";
@@ -118,6 +119,7 @@ const SERVICES = [
 ];
 
 const PARTNERS = [
+  { name: "Rough Country", logo: roughCountryLogo },
   { name: "Goodyear", logo: goodYearLogo },
   { name: "Firestone", logo: firestoneLogo },
   { name: "BFGoodrich", logo: bfGoodrichLogo },
