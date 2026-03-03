@@ -41,11 +41,13 @@ import gallery10 from "../assets/newGallery2.jpg";
 import gallery11 from "../assets/newGallery3.jpg";
 import gallery12 from "../assets/newGallery4.jpg";
 
-import liftKitCategory from "../assets/liftKitCategory.jpg";
-import shocksCategory from "../assets/shocksCategory.webp";
-import diffCoverCategory from "../assets/diffCoverCategory.jpg";
-import bumperCategory from "../assets/bumperCategory.jpeg";
-import winchCategory from "../assets/winchCategory.webp";
+import liftKitsCategory from "../assets/liftkit_category_final.png";
+import shocksCategory from "../assets/shocks_category.png";
+import springsCategory from "../assets/springs_category.png";
+import riggingCategory from "../assets/rigging_category.png";
+import filtersCategory from "../assets/filters_category.png";
+import winchesCategory from "../assets/winches_category.png";
+import bodykitCategory from "../assets/bodykit_category.png";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
@@ -88,33 +90,45 @@ const SERVICES = [
 const CATEGORIES = [
   {
     title: "Lift Kits",
-    description: "Suspension and leveling systems for street and off-road builds.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4673/",
-    image: liftKitCategory,
+    description: "Suspension lift systems and complete package options.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4673/#dokan-vendor-categories-anchor",
+    image: liftKitsCategory,
   },
   {
-    title: "Winches",
-    description: "Recovery-ready winches and mounting solutions.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5597/",
-    image: winchCategory,
-  },
-  {
-    title: "Body Kits + Bumpers",
-    description: "Aggressive style and practical protection components.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5595/",
-    image: bumperCategory,
-  },
-  {
-    title: "Shocks",
-    description: "Ride control components tuned for comfort and control.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4674/",
+    title: "Shocks & Struts",
+    description: "Ride control upgrades tuned for comfort and performance.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4674/#dokan-vendor-categories-anchor",
     image: shocksCategory,
   },
   {
-    title: "Steering + Axle",
-    description: "Drivetrain and steering hardware built for durability.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5392/",
-    image: diffCoverCategory,
+    title: "Springs",
+    description: "Coil and spring options for stance, load, and control.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4675/#dokan-vendor-categories-anchor",
+    image: springsCategory,
+  },
+  {
+    title: "Rigging & Steering",
+    description: "Core steering and rigging components built to last.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5392/#dokan-vendor-categories-anchor",
+    image: riggingCategory,
+  },
+  {
+    title: "Air Filters",
+    description: "Intake and filtration upgrades for cleaner airflow.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4898/#dokan-vendor-categories-anchor",
+    image: filtersCategory,
+  },
+  {
+    title: "Winches & Hoists",
+    description: "Recovery-ready winches, hoists, and mounting solutions.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5597/#dokan-vendor-categories-anchor",
+    image: winchesCategory,
+  },
+  {
+    title: "Body Kits & Spoilers",
+    description: "Exterior style and aero-inspired body components.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5595/#dokan-vendor-categories-anchor",
+    image: bodykitCategory,
   },
 ];
 
@@ -618,12 +632,12 @@ export default function CaliberSite() {
         <Container>
           <div className="mb-8 flex items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#687180]">Shop</p>
-              <h2 className="mt-2 text-3xl font-black uppercase text-[#111827]">Featured Categories</h2>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#687180]">Categories</p>
+              <h2 className="mt-2 text-3xl font-black uppercase text-[#111827]">Shop By Category</h2>
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {CATEGORIES.map((category, idx) => (
               <motion.a
                 key={category.title}
@@ -635,18 +649,41 @@ export default function CaliberSite() {
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.45, delay: idx * 0.05 }}
-                className="group flex h-full flex-col overflow-hidden rounded-xl border border-[#d8dde6] bg-white"
+                className="group relative block h-[17rem] overflow-hidden rounded-xl border border-[#d8dde6] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:h-[18rem] lg:h-[17rem]"
               >
-                <div className="bg-white p-3">
-                  <img src={category.image} alt={category.title} className="aspect-square w-full object-contain transition duration-300 group-hover:scale-105" />
-                </div>
-                <div className="flex h-full flex-col bg-[#f7f9fc] p-4">
-                  <h3 className="text-sm font-black uppercase tracking-wide text-[#1f2937]">{category.title}</h3>
-                  <p className="mt-2 text-sm text-[#546071]">{category.description}</p>
-                  <span className="mt-auto pt-3 text-xs font-bold uppercase tracking-[0.14em] text-[#8f0f18]">Shop now</span>
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className="block h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
+                  <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-[#161616]">
+                    Shop Category <ArrowRight className="h-3.5 w-3.5" />
+                  </div>
                 </div>
               </motion.a>
             ))}
+
+            <motion.a
+              href="#contact"
+              variants={reveal}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: CATEGORIES.length * 0.05 }}
+              className="group flex h-[17rem] flex-col justify-between overflow-hidden rounded-xl border border-[#d8dde6] bg-[#1f1f1f] p-5 text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:h-[18rem] lg:h-[17rem]"
+            >
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#c8c8c8]">Need Help?</p>
+                <h3 className="mt-2 text-xl font-black uppercase leading-tight">Find The Right Category Fast</h3>
+                <p className="mt-3 text-sm text-[#d7d7d7]">
+                  Tell us what you are building and we will point you to the best category and parts.
+                </p>
+              </div>
+              <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.12em] text-[#ff4d4d]">
+                Contact Our Team <ArrowRight className="h-4 w-4" />
+              </span>
+            </motion.a>
           </div>
         </Container>
       </Section>
