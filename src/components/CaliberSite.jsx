@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Menu,
-  X,
-  Wrench,
-  Sparkles,
-  Radio,
-  Boxes,
-  Phone,
+  ArrowRight,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  Facebook,
+  Instagram,
   Mail,
   MapPin,
-  ArrowRight,
+  Menu,
+  Sparkles,
   Truck,
-  ShieldCheck,
+  Wrench,
+  X,
+  Radio,
 } from "lucide-react";
 
-import heroImage from "../assets/caliberHero3.png";
+import heroImage from "../assets/truck_beach_hero.png";
 import aboutImage from "../assets/newAboutUs.jpg";
-import companyLogo from "../assets/caliberLogo-simpleThin.png";
+import companyLogo from "../assets/caliber_truck_logo.png";
+
 import roughCountryLogo from "../assets/partners/roughCountry.jpg";
 import goodYearLogo from "../assets/partners/goodYearLogo.jpg";
 import firestoneLogo from "../assets/partners/firestoneLogo.jpg";
@@ -25,7 +28,6 @@ import bfGoodrichLogo from "../assets/partners/bfGoodrichLogo.jpg";
 import hankookLogo from "../assets/partners/hankookLogo.jpg";
 import kellyTiresLogo from "../assets/partners/kellyTiresLogo.jpg";
 
-// Gallery images
 import gallery1 from "../assets/blackGMC_NoTires.jpeg";
 import gallery2 from "../assets/blackGMCshop.jpeg";
 import gallery3 from "../assets/blackLifted350.jpeg";
@@ -39,31 +41,17 @@ import gallery10 from "../assets/newGallery2.jpg";
 import gallery11 from "../assets/newGallery3.jpg";
 import gallery12 from "../assets/newGallery4.jpg";
 
-// Store preview
-import storePreview from "../assets/CaliberF1_Screenshot.jpg";
-
-// Category images
 import liftKitCategory from "../assets/liftKitCategory.jpg";
 import shocksCategory from "../assets/shocksCategory.webp";
 import diffCoverCategory from "../assets/diffCoverCategory.jpg";
 import bumperCategory from "../assets/bumperCategory.jpeg";
 import winchCategory from "../assets/winchCategory.webp";
 
-// Hero logo
-import heroLogo from "../assets/caliberLogoWebTPfin.png";
-
-
-
-// ------------------------------------------------------------
-// Caliber Performance LLC — Single-file React Site
-// Dark theme with blue/red accents. Responsive, accessible, modern.
-// Sections: Hero, Services, Packages, About, Partners, Gallery, Contact.
-// ------------------------------------------------------------
-
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
+  { label: "Builder", href: "#builder" },
+  { label: "Categories", href: "#shop" },
   { label: "Services", href: "#services" },
-  { label: "Shop", href: "#shop" },
   { label: "About", href: "#about" },
   { label: "Partners", href: "#partners" },
   { label: "Gallery", href: "#gallery" },
@@ -74,47 +62,59 @@ const SERVICES = [
   {
     key: "lift-kits",
     title: "Lift Kits",
-    icon: <Truck className="w-6 h-6" aria-hidden />,
-    items: [
-      "Suspension lifts",
-      "Leveling kits",
-      "Body Lifts",
-      "Tire & Wheel Packages",
-    ],
+    icon: <Truck className="h-5 w-5" aria-hidden />,
+    items: ["Suspension lifts", "Leveling kits", "Body lifts", "Tire and wheel packages"],
   },
   {
     key: "detailing",
     title: "Detailing",
-    icon: <Sparkles className="w-6 h-6" aria-hidden />,
-    items: [
-      "Paint Correction",
-      "Exterior Wash & Wax",
-      "Ceramic Coating",
-      "Color Match/Blackout",
-    ],
+    icon: <Sparkles className="h-5 w-5" aria-hidden />,
+    items: ["Paint correction", "Exterior wash and wax", "Ceramic coating", "Color match and blackout"],
   },
   {
     key: "electronics",
     title: "Electronics",
-    icon: <Radio className="w-6 h-6" aria-hidden />,
-    items: [
-      "12v Electronics",
-      "Lighting Affects/Accents",
-      "Power Steps (AMP/Lumastep)",
-      "Headlamp Replacement",
-    ],
+    icon: <Radio className="h-5 w-5" aria-hidden />,
+    items: ["12v electronics", "Lighting effects and accents", "Power steps", "Headlamp replacement"],
   },
   {
     key: "other",
-    title: "Other",
-    icon: <Wrench className="w-6 h-6" aria-hidden />,
-    items: [
-      "Cold Air Intakes",
-      "Exhaust Downpipes",
-      "Diff. Covers (AMP/Lumastep)",
-      "Train Horns",
-      "Tonneau Covers",
-    ],
+    title: "Performance",
+    icon: <Wrench className="h-5 w-5" aria-hidden />,
+    items: ["Cold air intakes", "Exhaust downpipes", "Differential covers", "Train horns"],
+  },
+];
+
+const CATEGORIES = [
+  {
+    title: "Lift Kits",
+    description: "Suspension and leveling systems for street and off-road builds.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4673/",
+    image: liftKitCategory,
+  },
+  {
+    title: "Winches",
+    description: "Recovery-ready winches and mounting solutions.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5597/",
+    image: winchCategory,
+  },
+  {
+    title: "Body Kits + Bumpers",
+    description: "Aggressive style and practical protection components.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5595/",
+    image: bumperCategory,
+  },
+  {
+    title: "Shocks",
+    description: "Ride control components tuned for comfort and control.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4674/",
+    image: shocksCategory,
+  },
+  {
+    title: "Steering + Axle",
+    description: "Drivetrain and steering hardware built for durability.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5392/",
+    image: diffCoverCategory,
   },
 ];
 
@@ -128,903 +128,699 @@ const PARTNERS = [
 ];
 
 const GALLERY_IMAGES = [
-  { id: 1, src: gallery9, alt: "Gallery" },
-  { id: 2, src: gallery10, alt: "Gallery" },
-  { id: 3, src: gallery11, alt: "Gallery" },
-  { id: 4, src: gallery12, alt: "Gallery" },
-  { id: 5, src: gallery1, alt: "Black GMC truck without tires" },
-  { id: 6, src: gallery2, alt: "Black GMC shop work" },
-  { id: 7, src: gallery3, alt: "Black lifted 350 truck" },
-  { id: 8, src: gallery4, alt: "Close up lift kit installation" },
-  { id: 9, src: gallery5, alt: "Lift kit components" },
+  { id: 1, src: gallery9, alt: "Truck build" },
+  { id: 2, src: gallery10, alt: "Custom truck" },
+  { id: 3, src: gallery11, alt: "Lift setup" },
+  { id: 4, src: gallery12, alt: "Lifted truck" },
+  { id: 5, src: gallery1, alt: "Black GMC without tires" },
+  { id: 6, src: gallery2, alt: "Black GMC in shop" },
+  { id: 7, src: gallery3, alt: "Black lifted 350" },
+  { id: 8, src: gallery4, alt: "Lift kit close-up" },
+  { id: 9, src: gallery5, alt: "Lift kit parts" },
   { id: 10, src: gallery6, alt: "Silver lifted 250 in shop" },
   { id: 11, src: gallery7, alt: "Undercarriage work" },
-  { id: 12, src: gallery8, alt: "White GMC shop work" },
+  { id: 12, src: gallery8, alt: "White GMC in shop" },
 ];
+
+const HERO_SLIDES = [
+  {
+    image: heroImage,
+    title: "Performance Parts",
+    subtitle: "That Add Power.",
+    lead: "Built for trucks, boats, and hard-use builds.",
+    body: "Unlock horsepower, improve durability, and get components selected for your exact setup.",
+  },
+  {
+    image: gallery3,
+    title: "Lifted Truck Builds",
+    subtitle: "Done Right.",
+    lead: "From stance to suspension travel, we build for real-world performance.",
+    body: "Shop proven kits and components matched to your vehicle and intended use.",
+  },
+  {
+    image: gallery2,
+    title: "Custom Shop Support",
+    subtitle: "From Parts to Install.",
+    lead: "Get expert recommendations from a team that installs what it sells.",
+    body: "Find the right combination of parts before you buy, then get guidance every step.",
+  },
+];
+
+const INITIAL_BUILDER_FORM = {
+  builder_name: "",
+  builder_email: "",
+  builder_phone: "",
+  vehicle_year_builder: "",
+  vehicle_make_builder: "",
+  vehicle_model_builder: "",
+  vehicle_trim_builder: "",
+  vehicle_engine_builder: "",
+  vehicle_drivetrain_builder: "",
+  vehicle_transmission_builder: "",
+  vehicle_cab_builder: "",
+  vehicle_bed_builder: "",
+  lift_height: "",
+  trackbar_brand: "",
+  shock_brand: "",
+  control_arm_brand: "",
+  spring_brand: "",
+  block_brand: "",
+  steering_stabilizer_brand: "",
+  differential_cover_brand: "",
+  package_notes: "",
+};
 
 function useScrollHeader() {
   const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
   return scrolled;
 }
 
-const Section = ({ id, children, className = "" }) => (
-  <section id={id} className={`py-20 ${className}`}>{children}</section>
-);
-
-const Container = ({ children, className = "" }) => (
-  <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${className}`}>{children}</div>
-);
-
-const Card = ({ children, className = "" }) => (
-  <div
-    className={`rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-6 backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.04)] ${className}`}
-  >
+const Section = ({ id, className = "", children }) => (
+  <section id={id} className={`py-16 sm:py-20 ${className}`}>
     {children}
-  </div>
+  </section>
 );
 
-const Badge = ({ children }) => (
-  <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-wider text-white/70">
-    {children}
-  </span>
+const Container = ({ className = "", children }) => (
+  <div className={`mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 ${className}`}>{children}</div>
 );
 
-const GradientText = ({ children, className = "" }) => (
-  <span className={`text-[#800108] ${className}`} style={{
-    textShadow: `-1px -1px 0 #aba296, 1px -1px 0 #aba296, -1px 1px 0 #aba296, 1px 1px 0 #aba296`
-  }}>
-    {children}
-  </span>
-);
+const reveal = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0 },
+};
 
 export default function CaliberSite() {
   const scrolled = useScrollHeader();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [builderStep, setBuilderStep] = useState(1);
+  const [builderForm, setBuilderForm] = useState(INITIAL_BUILDER_FORM);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    
-    // Add Web3Forms access key (new form)
     formData.append("access_key", "39e2047c-0c0a-48bc-ba69-71dc9a3961b4");
-    
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      });
 
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
       const data = await response.json();
 
       if (data.success) {
-        alert("Thank you for your inquiry! We'll get back to you soon.");
+        alert("Thank you for your inquiry. We will contact you soon.");
         form.reset();
       } else {
-        alert("Oops! Something went wrong. Please try again or email us directly.");
+        alert("Something went wrong. Please try again or email us directly.");
       }
     } catch (error) {
-      alert("Oops! Something went wrong. Please try again or email us directly.");
+      alert("Something went wrong. Please try again or email us directly.");
     }
   };
 
+  const updateBuilderField = (e) => {
+    const { name, value } = e.target;
+    setBuilderForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const stepFields = {
+    1: ["builder_name", "builder_email", "builder_phone"],
+    2: ["vehicle_year_builder", "vehicle_make_builder", "vehicle_model_builder", "vehicle_drivetrain_builder"],
+    3: ["lift_height"],
+  };
+
+  const validateBuilderStep = (step) => {
+    const missing = (stepFields[step] || []).filter((field) => !String(builderForm[field] || "").trim());
+    if (missing.length > 0) {
+      alert("Please complete all required fields in this section before continuing.");
+      return false;
+    }
+    return true;
+  };
+
+  const goToNextBuilderStep = () => {
+    if (!validateBuilderStep(builderStep)) return;
+    setBuilderStep((prev) => Math.min(prev + 1, 4));
+  };
+
+  const isBuilderStepComplete = (step) => {
+    const fields = stepFields[step] || [];
+    return fields.every((field) => String(builderForm[field] || "").trim());
+  };
+
+  const handleBuilderTabClick = (targetStep) => {
+    if (targetStep <= builderStep) {
+      setBuilderStep(targetStep);
+      return;
+    }
+    for (let step = 1; step < targetStep; step += 1) {
+      if (!isBuilderStepComplete(step)) {
+        alert("Please complete the previous step before moving forward.");
+        return;
+      }
+    }
+    setBuilderStep(targetStep);
+  };
+
+  const handleLiftKitSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateBuilderStep(1) || !validateBuilderStep(2) || !validateBuilderStep(3)) return;
+    const formData = new FormData();
+    Object.entries(builderForm).forEach(([key, value]) => formData.append(key, value));
+    formData.append("request_type", "Custom Lift Kit Package Builder");
+    formData.append("access_key", "39e2047c-0c0a-48bc-ba69-71dc9a3961b4");
+    formData.append("subject", "New Custom Lift Kit Package Request");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Your custom lift kit package request has been sent.");
+        setBuilderForm(INITIAL_BUILDER_FORM);
+        setBuilderStep(1);
+      } else {
+        alert("Something went wrong. Please try again or email us directly.");
+      }
+    } catch (error) {
+      alert("Something went wrong. Please try again or email us directly.");
+    }
+  };
+
+  const goToPrevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
+  const goToNextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
   return (
-    <div className="min-h-screen scroll-smooth bg-[#0b0f14] text-white">
-      {/* Backdrop accents */}
-      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute -top-40 left-1/2 h-96 w-[60rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-[#800108]/20 via-[#aba296]/10 to-[#800108]/15 blur-2xl" />
-        <div className="absolute bottom-0 right-0 h-72 w-72 translate-x-1/3 translate-y-1/3 rounded-full bg-[#aba296]/15 blur-2xl" />
+    <div className="min-h-screen bg-[#f7f8fa] text-[#151922] scroll-smooth">
+      <div className="bg-[#8f0f18] text-white">
+        <Container className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 py-2 text-[11px] font-black uppercase tracking-[0.1em] sm:justify-between">
+          <span>Caliber Performance LLC</span>
+          <span className="hidden sm:inline text-white/70">|</span>
+          <span>Punta Gorda, Florida</span>
+          <span className="hidden sm:inline text-white/70">|</span>
+          <span>Custom Lift Kit Packages</span>
+          <span className="hidden sm:inline text-white/70">|</span>
+          <a
+            href="#contact"
+            className="rounded-full border border-white/40 px-3 py-0.5 hover:bg-white/10"
+          >
+            Build Consultation Available
+          </a>
+        </Container>
       </div>
 
-      {/* Header */}
-      <header
-        className="relative z-50 bg-gradient-to-b from-[#cfc8bf]/90 via-[#cfc8bf]/60 to-transparent backdrop-blur-md"
-      >
-        <Container className="flex items-center justify-between py-1 sm:py-2 md:py-3">
-          <a href="#home" className="flex items-center">
-            <img 
-              src={companyLogo} 
-              alt="Caliber Performance LLC" 
-              className="h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto rounded-lg border-2 border-white/20 shadow-lg"
-            />
-          </a>
+      <header className={`sticky top-0 z-50 border-b border-black/70 bg-[#111111] text-white ${scrolled ? "shadow-lg" : ""}`}>
+        <div className="grid grid-cols-[auto_1fr_auto] items-center py-3 pl-4 pr-4 sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8">
+          <div className="flex items-center">
+            <a href="#home" className="flex items-center">
+              <span className="relative block h-[4.5rem] w-[6.5rem] overflow-hidden sm:h-[5.5rem] sm:w-[8rem]">
+                <img
+                  src={companyLogo}
+                  alt="Caliber Performance"
+                  className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-[45%] scale-[2.85] object-contain"
+                />
+              </span>
+            </a>
+          </div>
 
-          <nav className="hidden items-center gap-6 md:flex">
-            {NAV_ITEMS.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                className="text-lg font-semibold text-black transition hover:text-[#800108]"
-              >
-                {n.label}
+          <nav className="hidden items-center justify-center gap-8 lg:flex">
+            {NAV_ITEMS.map((item) => (
+              <a key={item.href} href={item.href} className="text-sm font-black uppercase tracking-wide hover:text-[#ff5a5a]">
+                {item.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              className="rounded-xl bg-gradient-to-r from-[#800108] to-[#aba296] px-4 py-2 text-sm font-medium shadow hover:opacity-95"
-            >
-              Contact Us
-            </a>
           </nav>
 
-          <button
-            onClick={() => setMenuOpen((s) => !s)}
-            className="rounded-xl border border-white/10 p-2 md:hidden"
-            aria-label="Toggle navigation"
-          >
+          <div className="hidden items-center justify-end gap-3 lg:flex">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="rounded-full bg-white p-2 text-[#202020] hover:bg-[#f2f2f2]"
+            >
+              <Facebook className="h-4 w-4" />
+            </a>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="rounded-full bg-white p-2 text-[#202020] hover:bg-[#f2f2f2]"
+            >
+              <Instagram className="h-4 w-4" />
+            </a>
+          </div>
+
+          <button type="button" onClick={() => setMenuOpen((v) => !v)} className="rounded-md border border-white/30 p-2 lg:hidden" aria-label="Toggle navigation">
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-        </Container>
+        </div>
 
-        {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden">
-            <Container>
-              <div className="mb-4 grid gap-2 rounded-2xl border border-white/10 bg-white/5 p-4">
-                {NAV_ITEMS.map((n) => (
-                  <a
-                    key={n.href}
-                    href={n.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="rounded-lg px-2 py-2 text-lg font-semibold text-black hover:bg-white/5 hover:text-[#800108]"
-                  >
-                    {n.label}
-                  </a>
-                ))}
-                <a
-                  href="#contact"
-                  onClick={() => setMenuOpen(false)}
-                  className="rounded-lg bg-gradient-to-r from-[#800108] to-[#aba296] px-3 py-2 text-center font-medium"
-                >
-                  Contact Us
+          <div className="pb-4 pl-4 pr-4 sm:pl-6 sm:pr-6 lg:hidden">
+            <div className="grid gap-2 rounded-lg border border-white/15 bg-[#1b1b1b] p-3">
+              {NAV_ITEMS.map((item) => (
+                <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="rounded px-2 py-2 text-sm font-bold uppercase tracking-wide hover:bg-white/10">
+                  {item.label}
                 </a>
-              </div>
-            </Container>
+              ))}
+              <a href="https://fuel1direct.com/seller/calibermarineandauto-com/" target="_blank" rel="noopener noreferrer" className="mt-1 rounded bg-[#8f0f18] px-3 py-2 text-center text-sm font-bold uppercase">
+                Search Parts
+              </a>
+            </div>
           </div>
         )}
       </header>
 
-      {/* Hero - Clean Modern Style */}
-      <Section
-        id="home"
-        className="relative flex items-start justify-center overflow-hidden min-h-screen pt-8 sm:pt-10 md:pt-12 lg:pt-14 xl:pt-16 pb-10 sm:pb-12 md:pb-14"
-      >
-        {/* Background Image with Blur Effect */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
-          <div className="absolute inset-0 bg-black/70" />
-        </div>
+      <section id="home" className="relative">
+        <div className="relative h-[72vh] overflow-hidden sm:h-[76vh]">
+          {HERO_SLIDES.map((slide, idx) => (
+            <img
+              key={slide.title}
+              src={slide.image}
+              alt={slide.title}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+                idx === activeSlide ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ))}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/30 to-black/45" />
 
-      {/* Main Content */}
-      <Container className="relative z-10 flex flex-col items-center justify-start w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="text-center max-w-5xl mx-auto px-8"
-        >
-            {/* Main Headline */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-6 sm:mb-8"
-            >
-              <h1 className="font-black text-white leading-tight mb-4 sm:mb-6 px-2 text-[clamp(1.75rem,4vw,4.5rem)]" style={{
-                textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(0,0,0,0.7)`
-              }}>
-                <span className="block mb-0 sm:mb-0">Shop Thousands of <span className="text-[#7a0206] font-black inline-block" style={{ fontSize: 'clamp(2.5rem,7vw,6rem)', fontWeight: 900, fontFamily: "'Black Ops One', 'Rubik Mono One', 'Alfa Slab One', 'Ultra', 'Impact', sans-serif", letterSpacing: '0.05em', textTransform: 'uppercase', lineHeight: '1.2', verticalAlign: 'middle', margin: '0.1em 0.2em', textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(122, 2, 6, 0.5)` }}>CALIBER</span></span>
-                <span className="block mb-2 sm:mb-3">Products and Services on</span>
-                <span className="text-[#fff200] font-black block" style={{
-                  fontSize: 'clamp(1.5rem,4.5vw,3.5rem)',
-                  textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 20px rgba(255, 242, 0, 0.5)`
-                }}>
-                  Fuel1Direct.com
-                </span>
-              </h1>
-            </motion.div>
+          <button
+            type="button"
+            onClick={goToPrevSlide}
+            aria-label="Previous slide"
+            className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-md border-2 border-white bg-black/35 p-2 text-white md:block"
+          >
+            <ChevronLeft className="h-7 w-7" />
+          </button>
+          <button
+            type="button"
+            onClick={goToNextSlide}
+            aria-label="Next slide"
+            className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-md border-2 border-white bg-black/35 p-2 text-white md:block"
+          >
+            <ChevronRight className="h-7 w-7" />
+          </button>
 
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-10 px-4 text-[clamp(1rem,2.5vw,1.5rem)]"
-            >
-              Browse our extensive catalog of marine electronics, automotive parts, tools, and accessories. 
-              From lift kits to marine supplies, find everything you need for your next project.
-            </motion.p>
-
-            {/* Call to Action Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="mb-8 sm:mb-12 flex flex-wrap gap-4 justify-center"
-            >
-              <a
-                href="https://fuel1direct.com/seller/calibermarineandauto-com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 sm:gap-4 bg-gradient-to-r from-[#800108] to-[#aba296] hover:from-[#800108]/90 hover:to-[#aba296]/90 text-white px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-xl font-bold text-base sm:text-lg md:text-xl transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-[#800108]/30"
-              >
-                <span className="hidden xs:inline">Visit Fuel 1 Direct Store</span>
-                <span className="xs:hidden">Visit Store</span>
-                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" />
-              </a>
-              <a
-                href="#categories"
-                className="group inline-flex items-center gap-3 sm:gap-4 bg-white/10 hover:bg-white/20 border-2 border-white/30 hover:border-white/50 backdrop-blur-sm text-white px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-xl font-bold text-base sm:text-lg md:text-xl transition-all duration-300 hover:scale-105 shadow-2xl"
-              >
-                View Categories
-                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" />
-              </a>
-            </motion.div>
-
-            {/* Trust Indicators */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 text-white/80 px-4"
-            >
-              <div className="flex items-center gap-2 sm:gap-3">
-                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-[#aba296]/20">
-                  <ShieldCheck className="h-5 w-5 sm:h-6 sm:w-6 text-[#aba296]" />
-                </div>
-                <div>
-                  <p className="text-xs sm:text-sm font-semibold text-white">Certified Technicians</p>
-                  <p className="text-xs text-white/60">Expert Service</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 sm:gap-3">
-                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-[#800108]/20">
-                  <Wrench className="h-5 w-5 sm:h-6 sm:w-6 text-[#800108]" />
-                </div>
-                <div>
-                  <p className="text-xs sm:text-sm font-semibold text-white">Premium Parts</p>
-                  <p className="text-xs text-white/60">Quality Guaranteed</p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </Container>
-
-      </Section>
-
-      {/* Category Catalog */}
-      <Section id="categories" className="bg-white/5 py-16">
-        <Container>
-          <div className="mb-12 text-center">
-            <h2 className="text-4xl font-bold mb-4">
-              Shop By <span className="text-[#800108]" style={{
-                textShadow: `-1px -1px 0 #aba296, 1px -1px 0 #aba296, -1px 1px 0 #aba296, 1px 1px 0 #aba296`
-              }}>Category</span>
-            </h2>
-            <p className="text-white/70 text-lg">Explore our most popular product categories</p>
-          </div>
-
-          {/* Mobile: 2 cols continuous, Desktop: 3 cols first row + 2 cols centered second row */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:hidden gap-4 sm:gap-6">
-            {/* Lift Kits */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
-                <div className="aspect-square overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4 bg-white">
-                  <img 
-                    src={liftKitCategory} 
-                    alt="Lift Kits" 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Lift Kits</h3>
-                <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
-                  Professional suspension and leveling kits for all truck models
+          <div className="relative z-10 h-full px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-20">
+            <div className="mx-auto flex h-full w-full max-w-[1800px] items-center">
+              <motion.div variants={reveal} initial="hidden" animate="show" transition={{ duration: 0.45 }} className="max-w-3xl">
+                <h1 className="text-4xl font-black uppercase leading-[0.95] text-white sm:text-6xl">
+                  {HERO_SLIDES[activeSlide].title}
+                  <span className="block">{HERO_SLIDES[activeSlide].subtitle}</span>
+                </h1>
+                <p className="mt-6 max-w-xl text-xl font-semibold text-white/95 sm:text-3xl">
+                  {HERO_SLIDES[activeSlide].lead}
                 </p>
-                <a
-                  href="https://fuel1direct.com/seller/calibermarineandauto-com/section/4673/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
-                >
-                  Shop Now <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
-                </a>
-              </Card>
-            </motion.div>
-
-            {/* Winches */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
-                <div className="aspect-square overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4 bg-white">
-                  <img 
-                    src={winchCategory} 
-                    alt="Winches" 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Winches</h3>
-                <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
-                  Heavy-duty winches for recovery and off-road applications
+                <p className="mt-3 max-w-xl text-lg text-white/90">
+                  {HERO_SLIDES[activeSlide].body}
                 </p>
-                <a
-                  href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5597/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
-                >
-                  Shop Now <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
-                </a>
-              </Card>
-            </motion.div>
-
-            {/* Bumpers */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
-                <div className="aspect-square overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4 bg-white">
-                  <img 
-                    src={bumperCategory} 
-                    alt="Bumpers" 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-              </div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Body Kits, Bumpers, & Spoilers</h3>
-                <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
-                  Custom front and rear bumpers for style and protection
-                </p>
-                <a
-                  href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5595/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
-                >
-                  Shop Now <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
-                </a>
-              </Card>
-            </motion.div>
-
-            {/* Shocks */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
-                <div className="aspect-square overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4 bg-white">
-                  <img 
-                    src={shocksCategory} 
-                    alt="Shocks" 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Shocks</h3>
-                <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
-                  High-performance shocks and struts for optimal ride quality
-                </p>
-                <a
-                  href="https://fuel1direct.com/seller/calibermarineandauto-com/section/4674/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
-                >
-                  Shop Now <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
-                </a>
-              </Card>
-            </motion.div>
-
-            {/* Differential Covers */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-            >
-              <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
-                <div className="aspect-square overflow-hidden rounded-lg sm:rounded-xl mb-3 sm:mb-4 bg-white">
-                  <img 
-                    src={diffCoverCategory} 
-                    alt="Differential Covers" 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-1 sm:mb-2 text-white">Steering, Axle & Rigging Systems</h3>
-                <p className="text-white/70 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
-                  Protective and stylish differential covers for heavy-duty use
-                </p>
-                <a
-                  href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5392/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 sm:gap-2 text-[#aba296] hover:text-white transition-colors text-xs sm:text-sm font-semibold"
-                >
-                  Shop Now <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
-                </a>
-              </Card>
-            </motion.div>
-              </div>
-
-          {/* Desktop Layout - 3 cols + 2 cols centered */}
-          <div className="hidden lg:flex flex-col gap-8">
-            {/* First Row - 3 cards */}
-            <div className="grid grid-cols-3 gap-8">
-              {/* Lift Kits */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
-                  <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-white">
-                    <img 
-                      src={liftKitCategory} 
-                      alt="Lift Kits" 
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Lift Kits</h3>
-                  <p className="text-white/70 text-sm mb-4">
-                    Professional suspension and leveling kits for all truck models
-                  </p>
-                  <a
-                    href="https://fuel1direct.com/seller/calibermarineandauto-com/section/4673/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
-                  >
-                    Shop Now <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Card>
-            </motion.div>
-
-              {/* Winches */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
-                  <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-white">
-                    <img 
-                      src={winchCategory} 
-                      alt="Winches" 
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Winches</h3>
-                  <p className="text-white/70 text-sm mb-4">
-                    Heavy-duty winches for recovery and off-road applications
-                  </p>
-                  <a
-                    href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5597/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
-                  >
-                    Shop Now <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Card>
-            </motion.div>
-
-              {/* Bumpers */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
-                <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
-                  <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-white">
-                    <img 
-                      src={bumperCategory} 
-                      alt="Bumpers" 
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Body Kits, Bumpers, & Spoilers</h3>
-                  <p className="text-white/70 text-sm mb-4">
-                    Custom front and rear bumpers for style and protection
-                  </p>
-                  <a
-                    href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5595/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
-                  >
-                    Shop Now <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Card>
-            </motion.div>
-              </div>
-
-            {/* Second Row - 2 cards centered */}
-            <div className="grid grid-cols-2 gap-8 max-w-3xl mx-auto">
-              {/* Shocks */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
-                  <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-white">
-                    <img 
-                      src={shocksCategory} 
-                      alt="Shocks" 
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Shocks</h3>
-                  <p className="text-white/70 text-sm mb-4">
-                    High-performance shocks and struts for optimal ride quality
-                  </p>
-                  <a
-                    href="https://fuel1direct.com/seller/calibermarineandauto-com/section/4674/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
-                  >
-                    Shop Now <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Card>
-            </motion.div>
-
-              {/* Differential Covers */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
-                <Card className="group hover:border-[#800108]/50 transition-all duration-300 overflow-hidden h-full">
-                  <div className="aspect-square overflow-hidden rounded-xl mb-4 bg-white">
-                    <img 
-                      src={diffCoverCategory} 
-                      alt="Differential Covers" 
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Steering, Axle & Rigging Systems</h3>
-                  <p className="text-white/70 text-sm mb-4">
-                    Protective and stylish differential covers for heavy-duty use
-                  </p>
-                  <a
-                    href="https://fuel1direct.com/seller/calibermarineandauto-com/section/5392/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors text-sm font-semibold"
-                  >
-                    Shop Now <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Card>
               </motion.div>
             </div>
           </div>
+
+          <div className="pointer-events-none absolute inset-x-0 bottom-16 z-20 hidden px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-20 md:block">
+            <div className="mx-auto w-full max-w-[1800px]">
+              <div className="ml-auto w-full max-w-md rounded-xl border border-white/35 bg-black/55 p-5 backdrop-blur-sm">
+                <p className="text-lg font-black uppercase leading-tight text-white">
+                  Shop Nationwide Products for the Automotive, Powersports, and Marine industries.
+                </p>
+                <a
+                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pointer-events-auto mt-4 inline-flex items-center gap-2 rounded-full bg-[#e00012] px-6 py-3 text-sm font-black uppercase tracking-wide text-white hover:bg-[#b8000e]"
+                >
+                  Shop Performance Parts <ArrowRight className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
+            {HERO_SLIDES.map((slide, idx) => (
+              <button
+                key={slide.title}
+                type="button"
+                aria-label={`Go to slide ${idx + 1}`}
+                onClick={() => setActiveSlide(idx)}
+                className={`h-3 w-3 rounded-full ${
+                  idx === activeSlide ? "bg-[#ff1a1a]" : "bg-white/60 hover:bg-white"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Section id="builder" className="bg-[#1a1a1a]">
+        <Container>
+          <div className="mb-8">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#b0b7c3]">Builder</p>
+            <h2 className="mt-2 text-3xl font-black uppercase text-white sm:text-4xl">Custom Lift Kit Package Creator</h2>
+            <p className="mt-3 max-w-3xl text-[#d0d5dd]">
+              At Caliber, we can build a fully custom lift kit package to match your dream ride. Complete each step and we will dial in the right setup for you.
+            </p>
+          </div>
+
+          <form onSubmit={handleLiftKitSubmit} className="mx-auto w-full max-w-5xl overflow-hidden rounded-2xl border border-[#d8dde6] bg-white shadow-[0_14px_40px_rgba(24,35,55,0.06)]">
+            <div className="grid lg:grid-cols-[220px_1fr]">
+              <div className="border-b border-[#e5e9f0] p-3 sm:p-4 lg:border-b-0 lg:border-r">
+                <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
+                  {[
+                    { id: 1, label: "Contact" },
+                    { id: 2, label: "Vehicle" },
+                    { id: 3, label: "Package" },
+                    { id: 4, label: "Notes" },
+                  ].map((tab) => (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() => handleBuilderTabClick(tab.id)}
+                      className={`rounded-lg border px-3 py-2 text-sm font-black uppercase tracking-[0.08em] transition lg:px-4 lg:py-3 lg:text-left ${
+                        builderStep === tab.id
+                          ? "border-[#8f0f18] bg-[#8f0f18] text-white"
+                          : isBuilderStepComplete(tab.id)
+                          ? "border-[#d7dce5] bg-[#f4f7fb] text-[#1f2937]"
+                          : "border-[#e2e7ef] bg-white text-[#6a7382] hover:bg-[#f8fafc]"
+                      }`}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-5 sm:p-6 lg:p-7">
+              {builderStep === 1 && (
+                <div className="space-y-5">
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <div>
+                      <label htmlFor="builder_name" className="mb-1 block text-sm text-[#546071]">Full Name</label>
+                      <input id="builder_name" name="builder_name" value={builderForm.builder_name} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]" />
+                    </div>
+                    <div>
+                      <label htmlFor="builder_email" className="mb-1 block text-sm text-[#546071]">Email</label>
+                      <input id="builder_email" name="builder_email" type="email" value={builderForm.builder_email} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]" />
+                    </div>
+                    <div>
+                      <label htmlFor="builder_phone" className="mb-1 block text-sm text-[#546071]">Phone</label>
+                      <input id="builder_phone" name="builder_phone" value={builderForm.builder_phone} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]" />
+                    </div>
+                  </div>
+                  <div className="flex justify-end">
+                    <button type="button" onClick={goToNextBuilderStep} className="inline-flex items-center gap-2 rounded-md bg-[#8f0f18] px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white">Next <ArrowRight className="h-4 w-4" /></button>
+                  </div>
+                </div>
+              )}
+
+              {builderStep === 2 && (
+                <div className="space-y-5">
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <input name="vehicle_year_builder" value={builderForm.vehicle_year_builder} onChange={updateBuilderField} placeholder="Year" className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]" />
+                    <input name="vehicle_make_builder" value={builderForm.vehicle_make_builder} onChange={updateBuilderField} placeholder="Make" className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]" />
+                    <input name="vehicle_model_builder" value={builderForm.vehicle_model_builder} onChange={updateBuilderField} placeholder="Model" className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]" />
+                    <input name="vehicle_trim_builder" value={builderForm.vehicle_trim_builder} onChange={updateBuilderField} placeholder="Trim" className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]" />
+                    <select name="vehicle_drivetrain_builder" value={builderForm.vehicle_drivetrain_builder} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]">
+                      <option value="">Drivetrain</option><option>4WD</option><option>AWD</option><option>RWD</option><option>FWD</option>
+                    </select>
+                    <input name="vehicle_transmission_builder" value={builderForm.vehicle_transmission_builder} onChange={updateBuilderField} placeholder="Transmission" className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]" />
+                  </div>
+                  <div className="flex justify-between">
+                    <button type="button" onClick={() => setBuilderStep(1)} className="rounded-md border border-[#d8dde6] px-4 py-2 text-sm font-bold uppercase tracking-wide text-[#344054]">Back</button>
+                    <button type="button" onClick={goToNextBuilderStep} className="inline-flex items-center gap-2 rounded-md bg-[#8f0f18] px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white">Next <ArrowRight className="h-4 w-4" /></button>
+                  </div>
+                </div>
+              )}
+
+              {builderStep === 3 && (
+                <div className="space-y-5">
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <select name="lift_height" value={builderForm.lift_height} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]"><option value="">Lift Height</option><option>Leveling Kit</option><option>2 inch</option><option>3 inch</option><option>4 inch</option><option>6 inch</option><option>8 inch+</option></select>
+                    <select name="spring_brand" value={builderForm.spring_brand} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]"><option value="">Springs Brand</option><option>Cognito</option><option>Icon</option><option>PMF</option><option>Carli</option><option>Ready Lift</option><option>BDS</option><option>Rough Country</option></select>
+                    <select name="trackbar_brand" value={builderForm.trackbar_brand} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]"><option value="">Trackbars Brand</option><option>Cognito</option><option>Icon</option><option>PMF</option><option>Carli</option><option>Ready Lift</option><option>BDS</option><option>Rough Country</option></select>
+                    <select name="shock_brand" value={builderForm.shock_brand} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]"><option value="">Shocks Brand</option><option>King</option><option>Fox</option><option>Falcon</option></select>
+                    <select name="control_arm_brand" value={builderForm.control_arm_brand} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]"><option value="">Control Arms Brand</option><option>Cognito</option><option>Icon</option><option>PMF</option><option>Carli</option><option>Ready Lift</option><option>BDS</option><option>Rough Country</option></select>
+                    <select name="block_brand" value={builderForm.block_brand} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]"><option value="">Blocks Brand</option><option>Cognito</option><option>Icon</option><option>PMF</option><option>Carli</option><option>Ready Lift</option><option>BDS</option><option>Rough Country</option></select>
+                    <select name="steering_stabilizer_brand" value={builderForm.steering_stabilizer_brand} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]"><option value="">Steering Stabilizers Brand</option><option>Cognito</option><option>Icon</option><option>PMF</option><option>Carli</option><option>Ready Lift</option><option>BDS</option><option>Rough Country</option></select>
+                    <select name="differential_cover_brand" value={builderForm.differential_cover_brand} onChange={updateBuilderField} className="w-full rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]"><option value="">Differential Covers Brand</option><option>Maghytec</option><option>Banks</option><option>S&amp;B</option></select>
+                  </div>
+                  <div className="flex justify-between">
+                    <button type="button" onClick={() => setBuilderStep(2)} className="rounded-md border border-[#d8dde6] px-4 py-2 text-sm font-bold uppercase tracking-wide text-[#344054]">Back</button>
+                    <button type="button" onClick={goToNextBuilderStep} className="inline-flex items-center gap-2 rounded-md bg-[#8f0f18] px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white">Next <ArrowRight className="h-4 w-4" /></button>
+                  </div>
+                </div>
+              )}
+
+              {builderStep === 4 && (
+                <div className="space-y-5">
+                  <div>
+                    <label htmlFor="package_notes" className="mb-1 block text-sm text-[#546071]">Build Goals / Notes</label>
+                    <textarea id="package_notes" name="package_notes" value={builderForm.package_notes} onChange={updateBuilderField} rows={5} className="w-full resize-none rounded-md border border-[#d8dde6] bg-white px-3 py-2.5 text-[#111827]" placeholder="On-road comfort, off-road use, towing, stance preference, budget range..." />
+                  </div>
+                  <div className="flex justify-between">
+                    <button type="button" onClick={() => setBuilderStep(3)} className="rounded-md border border-[#d8dde6] px-4 py-2 text-sm font-bold uppercase tracking-wide text-[#344054]">Back</button>
+                    <button type="submit" className="inline-flex items-center gap-2 rounded-md bg-[#8f0f18] px-6 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-[#790c14]">
+                      Submit Lift Kit Package Request <ArrowRight className="h-5 w-5" />
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+            </div>
+          </form>
         </Container>
       </Section>
 
-      {/* Contact */}
-      <Section id="contact">
+      <Section id="shop" className="bg-white">
         <Container>
-          <div className="mb-10">
-            <h2 className="text-3xl font-semibold">Need Assistance Finding What Parts Are Best for You?</h2>
-            <p className="mt-2 text-white/70">Tell us about your vehicle and what you want done</p>
+          <div className="mb-8 flex items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#687180]">Shop</p>
+              <h2 className="mt-2 text-3xl font-black uppercase text-[#111827]">Featured Categories</h2>
+            </div>
           </div>
-          <div className="grid gap-8 lg:grid-cols-3">
-            <Card className="lg:col-span-2">
+
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+            {CATEGORIES.map((category, idx) => (
+              <motion.a
+                key={category.title}
+                href={category.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={reveal}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: idx * 0.05 }}
+                className="group flex h-full flex-col overflow-hidden rounded-xl border border-[#d8dde6] bg-white"
+              >
+                <div className="bg-white p-3">
+                  <img src={category.image} alt={category.title} className="aspect-square w-full object-contain transition duration-300 group-hover:scale-105" />
+                </div>
+                <div className="flex h-full flex-col bg-[#f7f9fc] p-4">
+                  <h3 className="text-sm font-black uppercase tracking-wide text-[#1f2937]">{category.title}</h3>
+                  <p className="mt-2 text-sm text-[#546071]">{category.description}</p>
+                  <span className="mt-auto pt-3 text-xs font-bold uppercase tracking-[0.14em] text-[#8f0f18]">Shop now</span>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section id="services" className="bg-[#1a1a1a]">
+        <Container>
+          <div className="mb-8">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#b0b7c3]">Services</p>
+            <h2 className="mt-2 text-3xl font-black uppercase text-white">In-House Capabilities</h2>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {SERVICES.map((service, idx) => (
+              <motion.div
+                key={service.key}
+                variants={reveal}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: idx * 0.06 }}
+                className="rounded-xl border border-[#d8dde6] bg-white p-5"
+              >
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="grid h-10 w-10 place-items-center rounded-md bg-[#8f0f18] text-white">{service.icon}</div>
+                  <h3 className="text-lg font-black uppercase text-[#1f2937]">{service.title}</h3>
+                </div>
+                <ul className="grid gap-2 text-sm text-[#4d5868] sm:grid-cols-2">
+                  {service.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-[#8f0f18]" /><span>{item}</span></li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section id="about" className="bg-white">
+        <Container>
+          <div className="grid items-center gap-8 lg:grid-cols-2">
+            <motion.div variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#687180]">About</p>
+              <h2 className="mt-2 text-3xl font-black uppercase text-[#111827]">Caliber Performance</h2>
+              <p className="mt-4 text-[#4d5868]"><strong>Versatility and Quality:</strong> From diagnostics and repairs to surface restoration including fiberglass, gel-coat, detailing, and ceramic coatings, we have you covered.</p>
+              <p className="mt-3 text-[#4d5868]"><strong>Trusted Expertise:</strong> Our track record speaks volumes with clients across marine and high-performance automotive assets.</p>
+              <p className="mt-3 text-[#4d5868]"><strong>Our Promise:</strong> We stand behind our work and focus on improving both form and function with craftsmanship rooted in integrity.</p>
+              <p className="mt-3 text-[#4d5868]"><strong>Our Mission:</strong> Preserving your marine and automotive investments with faith, precision, and integrity.</p>
+            </motion.div>
+
+            <motion.div variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} transition={{ delay: 0.08 }} className="overflow-hidden rounded-xl border border-[#d8dde6] bg-white p-2">
+              <img src={aboutImage} alt="Caliber team and shop" className="h-full w-full rounded-lg object-cover" />
+            </motion.div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section id="partners" className="bg-[#1a1a1a]">
+        <Container>
+          <div className="mb-8">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#b0b7c3]">Partners</p>
+            <h2 className="mt-2 text-3xl font-black uppercase text-white">Brands We Install</h2>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            {PARTNERS.map((partner) => (
+              <div key={partner.name} className="flex h-20 items-center justify-center rounded-md border border-[#d8dde6] bg-white p-3">
+                <img src={partner.logo} alt={`${partner.name} logo`} className="h-full w-full object-contain" loading="lazy" />
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section id="gallery" className="bg-white">
+        <Container>
+          <div className="mb-8">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#687180]">Gallery</p>
+            <h2 className="mt-2 text-3xl font-black uppercase text-[#111827]">Recent Builds</h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {GALLERY_IMAGES.map((image, idx) => (
+              <motion.div
+                key={image.id}
+                variants={reveal}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: idx * 0.03 }}
+                className={`overflow-hidden rounded-lg border border-[#d8dde6] ${idx % 5 === 0 ? "lg:col-span-2" : ""}`}
+              >
+                <img src={image.src} alt={image.alt} loading="lazy" className="h-64 w-full object-cover transition duration-500 hover:scale-105 sm:h-72" />
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section id="contact" className="bg-[#1a1a1a] text-white">
+        <Container>
+          <div className="mb-8">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9aa4b5]">Contact</p>
+            <h2 className="mt-2 text-3xl font-black uppercase">Need Help Finding the Right Parts?</h2>
+            <p className="mt-3 max-w-2xl text-[#b5bfce]">Tell us about your vehicle and goals. We will help you choose the best setup.</p>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-[1.35fr_0.65fr]">
+            <div className="rounded-xl border border-[#343434] bg-[#242424] p-5">
               <form onSubmit={handleContactSubmit} className="grid gap-4 sm:grid-cols-2">
-                <div className="sm:col-span-1">
-                  <label htmlFor="name" className="mb-1 block text-sm text-white/80">Full Name</label>
-                  <input id="name" name="name" required className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="Jane Doe" />
+                <div>
+                  <label htmlFor="name" className="mb-1 block text-sm text-[#c6cfdb]">Full Name</label>
+                  <input id="name" name="name" required placeholder="Jane Doe" className="w-full rounded-md border border-[#4a4a4a] bg-[#1f1f1f] px-3 py-2.5 text-white placeholder:text-[#a0a0a0] focus:border-[#8f0f18]" />
                 </div>
-                <div className="sm:col-span-1">
-                  <label htmlFor="email" className="mb-1 block text-sm text-white/80">Email</label>
-                  <input id="email" name="email" type="email" required className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="you@example.com" />
+                <div>
+                  <label htmlFor="email" className="mb-1 block text-sm text-[#c6cfdb]">Email</label>
+                  <input id="email" name="email" type="email" required placeholder="you@example.com" className="w-full rounded-md border border-[#4a4a4a] bg-[#1f1f1f] px-3 py-2.5 text-white placeholder:text-[#a0a0a0] focus:border-[#8f0f18]" />
                 </div>
-                <div className="sm:col-span-1">
-                  <label htmlFor="phone" className="mb-1 block text-sm text-white/80">Phone</label>
-                  <input id="phone" name="phone" className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="(555) 000-0000" />
+                <div>
+                  <label htmlFor="phone" className="mb-1 block text-sm text-[#c6cfdb]">Phone</label>
+                  <input id="phone" name="phone" placeholder="(555) 000-0000" className="w-full rounded-md border border-[#4a4a4a] bg-[#1f1f1f] px-3 py-2.5 text-white placeholder:text-[#a0a0a0] focus:border-[#8f0f18]" />
                 </div>
-                <div className="sm:col-span-1">
-                  <label htmlFor="vehicle_make" className="mb-1 block text-sm text-white/80">Vehicle Make</label>
-                  <input id="vehicle_make" name="vehicle_make" required className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="Ford, Chevy, Toyota, etc." />
+                <div>
+                  <label htmlFor="vehicle_make" className="mb-1 block text-sm text-[#c6cfdb]">Vehicle Make</label>
+                  <input id="vehicle_make" name="vehicle_make" required placeholder="Ford, Chevy, Toyota" className="w-full rounded-md border border-[#4a4a4a] bg-[#1f1f1f] px-3 py-2.5 text-white placeholder:text-[#a0a0a0] focus:border-[#8f0f18]" />
                 </div>
-                <div className="sm:col-span-1">
-                  <label htmlFor="vehicle_model" className="mb-1 block text-sm text-white/80">Vehicle Model</label>
-                  <input id="vehicle_model" name="vehicle_model" required className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="F-150, Silverado, Tacoma, etc." />
+                <div>
+                  <label htmlFor="vehicle_model" className="mb-1 block text-sm text-[#c6cfdb]">Vehicle Model</label>
+                  <input id="vehicle_model" name="vehicle_model" required placeholder="F-150, Silverado, Tacoma" className="w-full rounded-md border border-[#4a4a4a] bg-[#1f1f1f] px-3 py-2.5 text-white placeholder:text-[#a0a0a0] focus:border-[#8f0f18]" />
                 </div>
-                <div className="sm:col-span-1">
-                  <label htmlFor="vehicle_year" className="mb-1 block text-sm text-white/80">Vehicle Year</label>
-                  <input id="vehicle_year" name="vehicle_year" type="number" required min="1990" max="2025" className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="2020" />
-                </div>
-                <div className="sm:col-span-2">
-                  <label htmlFor="work_description" className="mb-1 block text-sm text-white/80">What work do you want done?</label>
-                  <textarea id="work_description" name="work_description" rows={5} required className="w-full resize-none rounded-xl border border-white/15 bg-white/5 px-3 py-2 outline-none placeholder:text-white/40" placeholder="Describe the modifications, repairs, or upgrades you want for your vehicle..." />
+                <div>
+                  <label htmlFor="vehicle_year" className="mb-1 block text-sm text-[#c6cfdb]">Vehicle Year</label>
+                  <input id="vehicle_year" name="vehicle_year" type="number" required min="1990" max="2035" placeholder="2020" className="w-full rounded-md border border-[#4a4a4a] bg-[#1f1f1f] px-3 py-2.5 text-white placeholder:text-[#a0a0a0] focus:border-[#8f0f18]" />
                 </div>
                 <div className="sm:col-span-2">
-                  <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#800108] to-[#aba296] px-5 py-3 font-medium hover:opacity-95">
-                    Get Parts Recommendation <ArrowRight className="h-5 w-5" />
+                  <label htmlFor="work_description" className="mb-1 block text-sm text-[#c6cfdb]">What work do you want done?</label>
+                  <textarea id="work_description" name="work_description" rows={5} required placeholder="Describe modifications, repairs, or upgrades..." className="w-full resize-none rounded-md border border-[#4a4a4a] bg-[#1f1f1f] px-3 py-2.5 text-white placeholder:text-[#a0a0a0] focus:border-[#8f0f18]" />
+                </div>
+                <div className="sm:col-span-2">
+                  <button type="submit" className="inline-flex items-center gap-2 rounded-md bg-[#8f0f18] px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-[#790c14]">
+                    Get Parts Recommendation <ArrowRight className="h-4 w-4" />
                   </button>
                 </div>
               </form>
-            </Card>
+            </div>
 
-            <Card className="self-start">
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#aba296]/20">
-                    <MapPin className="h-6 w-6 text-[#aba296]" />
-                  </div>
+            <div className="space-y-4 rounded-xl border border-[#343434] bg-[#242424] p-5">
+              <div className="rounded-md border border-[#4a4a4a] bg-[#1f1f1f] p-4">
+                <div className="flex items-start gap-3">
+                  <MapPin className="h-5 w-5 text-[#f87171]" />
                   <div>
-                    <p className="text-sm text-white/60">Location</p>
-                    <p className="font-medium text-white">Punta Gorda, FL</p>
+                    <p className="text-xs uppercase tracking-[0.14em] text-[#b0b0b0]">Location</p>
+                    <p className="mt-1 font-semibold">Punta Gorda, FL</p>
                   </div>
                 </div>
-                <div className="h-px bg-white/10"></div>
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#800108]/20">
-                    <Mail className="h-6 w-6 text-[#800108]" />
-                  </div>
+              </div>
+
+              <div className="rounded-md border border-[#4a4a4a] bg-[#1f1f1f] p-4">
+                <div className="flex items-start gap-3">
+                  <Mail className="h-5 w-5 text-[#f87171]" />
                   <div>
-                    <p className="text-sm text-white/60">Email</p>
-                    <a href="mailto:info@caliberperformanceusa.com" className="font-medium text-white hover:text-[#aba296] transition">
-                      info@caliberperformanceusa.com
-                    </a>
-                  </div>
-                  </div>
-                </div>
-              </Card>
-          </div>
-        </Container>
-      </Section>
-
-      <Section id="services" className="bg-white/5">
-        <Container>
-          <div className="mb-10 flex items-end justify-between gap-4">
-            <div>
-              <h2 className="text-3xl font-semibold">Services</h2>
-              <p className="mt-2 text-white/70">
-                Four specialties with full-service options under each.
-              </p>
-            </div>
-            <a href="#contact" className="hidden rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm hover:bg-white/10 md:block">
-              Need something custom?
-            </a>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">
-            {SERVICES.map((s) => (
-              <Card key={s.key}>
-                <div className="flex items-start justify-between gap-6">
-                  <div className="flex items-center gap-3">
-                    <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-[#800108]/20 to-[#aba296]/20 ring-1 ring-white/10">
-                      {s.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold">{s.title}</h3>
-                  </div>
-                </div>
-                <ul className="mt-5 grid list-disc gap-2 pl-6 text-white/80 sm:grid-cols-2 sm:pl-6">
-                  {s.items.map((it, idx) => (
-                    <li key={idx}>{it}</li>
-                  ))}
-                </ul>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* Packages / Products */}
-      {/* Shop - Hidden per user request */}
-      {/* 
-      <Section id="shop" className="bg-white/5">
-        <Container>
-          <div className="text-center">
-            <h2 className="text-4xl font-semibold mb-4">
-              View our catalog of over 50,000+ unique products on <span className="text-[#fff200] font-black text-4xl" style={{
-                textShadow: `-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000`
-              }}>Fuel1Direct.com</span>
-            </h2>
-            <p className="text-xl text-white/70 mb-8 max-w-3xl mx-auto">
-              Browse our extensive catalog of marine electronics, automotive parts, tools, and accessories. 
-              From lift kits to marine supplies, find everything you need for your next project.
-            </p>
-            <a 
-              href="https://fuel1direct.com/seller/calibermarineandauto-com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#800108] to-[#aba296] px-8 py-4 text-lg font-medium shadow-lg hover:opacity-95 transition-all hover:scale-105"
-            >
-              Visit Fuel 1 Direct Store <ArrowRight className="h-6 w-6" />
-            </a>
-          </div>
-          
-          <div className="mt-16">
-            <div className="mb-8 text-center">
-              <h3 className="text-2xl font-semibold mb-4 text-white">
-                Browse Our Store
-              </h3>
-            </div>
-            
-            <div 
-              className="relative cursor-pointer group overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
-              onClick={() => window.open('https://fuel1direct.com/seller/calibermarineandauto-com/', '_blank', 'noopener,noreferrer')}
-            >
-              <img
-                src={storePreview}
-                alt="Caliber Performance LLC Store on Fuel 1 Direct"
-                className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
-              />
-              
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-100 scale-95">
-                  <div className="bg-gradient-to-r from-[#800108] to-[#aba296] px-8 py-4 rounded-xl shadow-2xl">
-                    <div className="flex items-center gap-3 text-white font-semibold text-lg">
-                      Click to Visit Store <ArrowRight className="h-6 w-6" />
-                    </div>
+                    <p className="text-xs uppercase tracking-[0.14em] text-[#b0b0b0]">Email</p>
+                    <a href="mailto:info@caliberperformanceusa.com" className="mt-1 block font-semibold hover:text-[#fca5a5]">info@caliberperformanceusa.com</a>
                   </div>
                 </div>
               </div>
             </div>
-            
-            <div className="mt-6 text-center">
-              <p className="text-white/60 text-sm mb-4">
-                Having trouble viewing the store? 
-              </p>
-              <a 
-                href="https://fuel1direct.com/seller/calibermarineandauto-com/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[#aba296] hover:text-white transition-colors"
-              >
-                Open Store in New Tab <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </Container>
-      </Section>
-      */}
-
-      {/* About */}
-      <Section id="about" className="bg-white/5">
-        <Container>
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div className="order-2 lg:order-1">
-              <h2 className="text-4xl font-semibold text-[#800108]" style={{
-                textShadow: `-1px -1px 0 #aba296, 1px -1px 0 #aba296, -1px 1px 0 #aba296, 1px 1px 0 #aba296`
-              }}>About Us</h2>
-              <p className="mt-4 text-white/70">
-                <b>Versatility & Quality:</b> From diagnostics and repairs to surface restoration (fiberglass, gel-coat, detailing, ceramic coatings), we’ve got you covered.
-              </p>
-              <p className="mt-4 text-white/70">
-                <b>Trusted Expertise:</b> Our track record speaks volumes—with clients across  marine, and high-performance automotive assets.
-              </p>
-              <p className="mt-4 text-white/70">
-                <b>Our Promise:</b> We stand firmly behind our work, aiming to enhance both the form and function of your vessels and vehicles. With Caliber, you’re not just getting service—you’re receiving craftsmanship rooted in integrity.
-              </p>
-              <p className="mt-4 text-white/70">
-                <b>Our Mission:</b> "Preserving your marine and automotive investments—with faith, precision, and integrity." 
-              </p>
-            </div>
-            <div className="order-1 lg:order-2">
-              <div
-                className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border-white/10 bg-cover bg-center shadow-2xl"
-                style={{ backgroundImage: `url(${aboutImage})` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#0b0f14]/40 to-transparent" />
-                {/* Optional caption — delete if not needed */}
-                
-              </div>
-            </div>
-
           </div>
         </Container>
       </Section>
 
-      {/* Partners */}
-      <Section id="partners">
-        <Container>
-          <div className="mb-8 flex items-end justify-between">
-            <div>
-              <h2 className="text-3xl font-semibold">Partners</h2>
-              <p className="mt-2 text-white/70">Brands we trust & install.</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {PARTNERS.map((p) => (
-              <div
-                key={p.name}
-                className="flex h-28 items-center justify-center rounded-2xl bg-white border border-black/10 p-4 shadow-sm hover:shadow-md transition"
-              >
-                <div className="w-44 h-16 md:w-56 md:h-20">
-                  <img
-                    src={p.logo}
-                    alt={`${p.name} logo`}
-                    loading="lazy"
-                    className="h-full w-full object-contain"
-                  />
-                </div>
-              </div>
-
-
-
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* Gallery / Instagram */}
-      <Section id="gallery" className="bg-white/5">
-        <Container>
-          <div className="mb-6">
-              <h2 className="text-3xl font-semibold">Gallery</h2>
-          </div>
-
-          {/* Gallery with actual work photos */}
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {GALLERY_IMAGES.map((g) => (
-              <div
-                key={g.id}
-                className="group relative aspect-square overflow-hidden rounded-2xl border border-white/10"
-              >
-                <img
-                  src={g.src}
-                  alt={g.alt}
-                  className="h-full w-full object-cover transition group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/20" />
-              </div>
-            ))}
-          </div>
-
-          {/* Option B: embed feed from a service like LightWidget/EmbedSocial/Instagram oEmbed */}
-          {/*
-            <div className="mt-8">
-              <iframe
-                src="https://lightwidget.com/widgets/your-widget-id.html"
-                className="w-full h-[600px] rounded-2xl border border-white/10"
-                title="Instagram feed"
-                loading="lazy"
-              />
-            </div>
-          */}
-        </Container>
-      </Section>
-
-      {/* Footer */}
-      <footer className="mt-20 border-t border-white/10 bg-black/20">
-        <Container>
-          <div className="flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
-            <p className="text-sm text-white/60">© {new Date().getFullYear()} Caliber Performance LLC. All rights reserved.</p>
-            <div className="flex items-center gap-4 text-white/60">
-              <a href="#privacy" className="hover:text-white">Privacy</a>
-              <a href="#terms" className="hover:text-white">Terms</a>
-            </div>
+      <footer className="border-t border-[#293244] bg-[#0d121b] text-[#9aa4b5]">
+        <Container className="flex flex-col items-center justify-between gap-4 py-8 text-sm sm:flex-row">
+          <p>© {new Date().getFullYear()} Caliber Performance LLC. All rights reserved.</p>
+          <div className="flex items-center gap-5">
+            <a href="#" className="hover:text-white">Privacy</a>
+            <a href="#" className="hover:text-white">Terms</a>
           </div>
         </Container>
       </footer>
