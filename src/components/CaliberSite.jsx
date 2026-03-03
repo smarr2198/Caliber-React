@@ -350,7 +350,7 @@ export default function CaliberSite() {
       </div>
 
       <header className={`sticky top-0 z-50 border-b border-black/70 bg-[#111111] text-white ${scrolled ? "shadow-lg" : ""}`}>
-        <div className="grid grid-cols-[auto_1fr_auto] items-center py-3 pl-4 pr-4 sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8">
+        <div className="grid grid-cols-[auto_1fr] items-center py-3 pl-4 pr-4 sm:pl-6 sm:pr-6 lg:grid-cols-[auto_1fr_auto] lg:pl-8 lg:pr-8">
           <div className="flex items-center">
             <a href="#home" className="flex items-center">
               <span className="relative block h-[4.5rem] w-[6.5rem] overflow-hidden sm:h-[5.5rem] sm:w-[8rem]">
@@ -392,7 +392,7 @@ export default function CaliberSite() {
             </a>
           </div>
 
-          <button type="button" onClick={() => setMenuOpen((v) => !v)} className="rounded-md border border-white/30 p-2 lg:hidden" aria-label="Toggle navigation">
+          <button type="button" onClick={() => setMenuOpen((v) => !v)} className="inline-flex h-10 w-10 items-center justify-center justify-self-end rounded-md border border-white/30 lg:hidden" aria-label="Toggle navigation">
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
