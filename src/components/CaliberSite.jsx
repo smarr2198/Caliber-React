@@ -18,7 +18,10 @@ import {
 } from "lucide-react";
 
 import heroImage from "../assets/truck_beach_hero.png";
-import aboutImage from "../assets/newAboutUs.jpg";
+import twoTruckHero from "../assets/twoTruckHero.JPG?url";
+import caliberTruckHero from "../assets/caliberTruckHero.JPG?url";
+import truckFrontHero from "../assets/truckFrontGallery.JPG?url";
+import aboutImage from "../assets/malachiTruck.JPG?url";
 import companyLogo from "../assets/caliber_truck_logo.png";
 
 import roughCountryLogo from "../assets/partners/roughCountry.jpg";
@@ -40,6 +43,12 @@ import gallery9 from "../assets/newGallery1.jpg";
 import gallery10 from "../assets/newGallery2.jpg";
 import gallery11 from "../assets/newGallery3.jpg";
 import gallery12 from "../assets/newGallery4.jpg";
+import winchFrontGallery from "../assets/winchFrontGallery.JPG?url";
+import corvetteCaliber from "../assets/corvetteCaliber.JPG?url";
+import carBodyGallery from "../assets/carBody.JPG?url";
+import insideWheelGallery from "../assets/insideWheelGallery.JPG?url";
+import partsGallery from "../assets/partsGallery.JPG?url";
+import motoCaliber from "../assets/motoCaliber.JPG?url";
 
 import liftKitsCategory from "../assets/liftkit_category_final.png";
 import shocksCategory from "../assets/shocks_category.png";
@@ -142,21 +151,34 @@ const PARTNERS = [
 ];
 
 const GALLERY_IMAGES = [
-  { id: 1, src: gallery9, alt: "Truck build" },
-  { id: 2, src: gallery10, alt: "Custom truck" },
-  { id: 3, src: gallery11, alt: "Lift setup" },
-  { id: 4, src: gallery12, alt: "Lifted truck" },
-  { id: 5, src: gallery1, alt: "Black GMC without tires" },
-  { id: 6, src: gallery2, alt: "Black GMC in shop" },
-  { id: 7, src: gallery3, alt: "Black lifted 350" },
-  { id: 8, src: gallery4, alt: "Lift kit close-up" },
-  { id: 9, src: gallery5, alt: "Lift kit parts" },
-  { id: 10, src: gallery6, alt: "Silver lifted 250 in shop" },
-  { id: 11, src: gallery7, alt: "Undercarriage work" },
-  { id: 12, src: gallery8, alt: "White GMC in shop" },
+  { id: 1, src: winchFrontGallery, alt: "Winch front setup" },
+  { id: 2, src: corvetteCaliber, alt: "Corvette at Caliber" },
+  { id: 3, src: carBodyGallery, alt: "Body work detail" },
+  { id: 4, src: insideWheelGallery, alt: "Wheel and suspension detail" },
+  { id: 5, src: partsGallery, alt: "Performance parts layout" },
+  { id: 6, src: motoCaliber, alt: "Motorcycle at Caliber" },
+  { id: 7, src: gallery9, alt: "Truck build" },
+  { id: 8, src: gallery10, alt: "Custom truck" },
+  { id: 9, src: gallery11, alt: "Lift setup" },
+  { id: 10, src: gallery12, alt: "Lifted truck" },
+  { id: 11, src: gallery1, alt: "Black GMC without tires" },
+  { id: 12, src: gallery2, alt: "Black GMC in shop" },
+  { id: 13, src: gallery3, alt: "Black lifted 350" },
+  { id: 14, src: gallery4, alt: "Lift kit close-up" },
+  { id: 15, src: gallery5, alt: "Lift kit parts" },
+  { id: 16, src: gallery6, alt: "Silver lifted 250 in shop" },
+  { id: 17, src: gallery7, alt: "Undercarriage work" },
+  { id: 18, src: gallery8, alt: "White GMC in shop" },
 ];
 
 const HERO_SLIDES = [
+  {
+    image: truckFrontHero,
+    title: "Performance Parts",
+    subtitle: "That Add Power.",
+    lead: "Built for trucks, boats, and hard-use builds.",
+    body: "Unlock horsepower, improve durability, and get components selected for your exact setup.",
+  },
   {
     image: heroImage,
     title: "Performance Parts",
@@ -165,14 +187,14 @@ const HERO_SLIDES = [
     body: "Unlock horsepower, improve durability, and get components selected for your exact setup.",
   },
   {
-    image: gallery3,
+    image: twoTruckHero,
     title: "Lifted Truck Builds",
     subtitle: "Done Right.",
     lead: "From stance to suspension travel, we build for real-world performance.",
     body: "Shop proven kits and components matched to your vehicle and intended use.",
   },
   {
-    image: gallery2,
+    image: caliberTruckHero,
     title: "Custom Shop Support",
     subtitle: "From Parts to Install.",
     lead: "Get expert recommendations from a team that installs what it sells.",
