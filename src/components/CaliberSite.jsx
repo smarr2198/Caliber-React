@@ -81,10 +81,10 @@ const SERVICES = [
     items: ["Suspension lifts", "Leveling kits", "Body lifts", "Tire and wheel packages"],
   },
   {
-    key: "detailing",
-    title: "Detailing",
-    icon: <Sparkles className="h-5 w-5" aria-hidden />,
-    items: ["Paint correction", "Exterior wash and wax", "Ceramic coating", "Color match and blackout"],
+    key: "services",
+    title: "Services",
+    icon: <CheckCircle2 className="h-5 w-5" aria-hidden />,
+    items: ["Oil Changes", "Brakes", "Maintenance", "Diagnostics"],
   },
   {
     key: "electronics",
@@ -99,10 +99,10 @@ const SERVICES = [
     items: ["Cold Air Intakes", "Exhaust Kits", "Programmers", "Custom Tunes", "Delete Kits", "Fuel Additives"],
   },
   {
-    key: "services",
-    title: "Services",
-    icon: <CheckCircle2 className="h-5 w-5" aria-hidden />,
-    items: ["Oil Changes", "Brakes", "Maintenance", "Diagnostics"],
+    key: "detailing",
+    title: "Detailing",
+    icon: <Sparkles className="h-5 w-5" aria-hidden />,
+    items: ["Paint correction", "Exterior wash and wax", "Ceramic coating", "Color match and blackout"],
   },
 ];
 
@@ -815,26 +815,21 @@ export default function CaliberSite() {
                       className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/6 p-5 backdrop-blur-sm transition hover:border-white/20 hover:bg-white/10"
                     >
                       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-                      <div className="mb-5 flex items-center justify-between gap-3">
-                        <div className="flex items-center gap-3">
-                          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#8f0f18] text-white shadow-[0_10px_25px_rgba(143,15,24,0.35)]">
-                            {service.icon}
-                          </div>
-                          <div>
-                            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#b0b7c3]">Capability</p>
-                            <h3 className="text-lg font-black uppercase text-white">{service.title}</h3>
-                          </div>
+                      <div className="mb-5 flex items-center gap-3">
+                        <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#8f0f18] text-white shadow-[0_10px_25px_rgba(143,15,24,0.35)]">
+                          {service.icon}
                         </div>
-                        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#d0d5dd]">
-                          {service.items.length} Items
-                        </span>
+                        <div>
+                          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#b0b7c3]">Capability</p>
+                          <h3 className="text-lg font-black uppercase text-white">{service.title}</h3>
+                        </div>
                       </div>
 
                       <ul className="grid gap-2 sm:grid-cols-2">
                         {service.items.map((item) => (
                           <li
                             key={item}
-                            className="flex items-start gap-2 rounded-xl border border-white/8 bg-black/20 px-3 py-2 text-sm text-[#eef1f5]"
+                            className="flex items-start gap-2 px-1 py-1 text-sm text-[#eef1f5]"
                           >
                             <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#ff4d4d]" />
                             <span>{item}</span>
