@@ -88,15 +88,21 @@ const SERVICES = [
   },
   {
     key: "electronics",
-    title: "Electronics",
+    title: "Accessories",
     icon: <Radio className="h-5 w-5" aria-hidden />,
-    items: ["12v electronics", "Lighting effects and accents", "Power steps", "Headlamp replacement"],
+    items: ["Power Steps", "Winches", "Bumpers", "Tonneau Covers", "Lighting", "Fender Flares", "Floor Mats", "Diff Covers", "Train Horns"],
   },
   {
     key: "other",
     title: "Performance",
     icon: <Wrench className="h-5 w-5" aria-hidden />,
-    items: ["Cold air intakes", "Exhaust downpipes", "Differential covers", "Train horns"],
+    items: ["Cold Air Intakes", "Exhaust Kits", "Programmers", "Custom Tunes", "Delete Kits", "Fuel Additives"],
+  },
+  {
+    key: "services",
+    title: "Services",
+    icon: <CheckCircle2 className="h-5 w-5" aria-hidden />,
+    items: ["Oil Changes", "Brakes", "Maintenance", "Diagnostics"],
   },
 ];
 
@@ -114,10 +120,10 @@ const CATEGORIES = [
     image: shocksCategory,
   },
   {
-    title: "Springs",
-    description: "Coil and spring options for stance, load, and control.",
-    link: "https://fuel1direct.com/product-tag/tonnoaue-covers/",
-    image: springsCategory,
+    title: "Intake Filters & Exhaust",
+    description: "Intake, filtration, and exhaust upgrades for airflow and sound.",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4898/#dokan-vendor-categories-anchor",
+    image: filtersCategory,
   },
   {
     title: "Rigging & Steering",
@@ -126,10 +132,10 @@ const CATEGORIES = [
     image: riggingCategory,
   },
   {
-    title: "Air Filters",
-    description: "Intake and filtration upgrades for cleaner airflow.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4898/#dokan-vendor-categories-anchor",
-    image: filtersCategory,
+    title: "Tonneau Covers",
+    description: "Bed cover options built for protection, style, and utility.",
+    link: "https://fuel1direct.com/product-tag/tonnoaue-covers/",
+    image: springsCategory,
   },
   {
     title: "Winches & Hoists",
@@ -185,7 +191,7 @@ const HERO_SLIDES = [
     image: truckFrontHero,
     title: "Performance Parts",
     subtitle: "That Add Power.",
-    lead: "Built for trucks, boats, and hard-use builds.",
+    lead: "Built for trucks, ATVs, and hard-use builds.",
     body: "Unlock horsepower, improve durability, and get components selected for your exact setup.",
   },
   {
@@ -193,7 +199,7 @@ const HERO_SLIDES = [
     mobileImage: truckVanAtvMobileHero,
     title: "Performance Parts",
     subtitle: "That Add Power.",
-    lead: "Built for trucks, boats, and hard-use builds.",
+    lead: "Built for trucks, ATVs, and hard-use builds.",
     body: "Unlock horsepower, improve durability, and get components selected for your exact setup.",
   },
   {
@@ -573,9 +579,9 @@ export default function CaliberSite() {
         <Container>
           <div className="mb-8">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#b0b7c3]">Builder</p>
-            <h2 className="mt-2 text-3xl font-black uppercase text-white sm:text-4xl">Custom Lift Kit Package Creator</h2>
+            <h2 className="mt-2 text-3xl font-black uppercase text-white sm:text-4xl">Create your own lift wheel & tire packages</h2>
             <p className="mt-3 max-w-3xl text-[#d0d5dd]">
-              At Caliber, we can build a fully custom lift kit package to match your dream ride. Complete each step and we will dial in the right setup for you.
+              At Caliber, we can build a fully custom lift, wheel, and tire package to match your dream ride. We have access to a multitude of manufacturers and can piece together the right lift kit package specifically for your build.
             </p>
           </div>
 
@@ -766,33 +772,80 @@ export default function CaliberSite() {
 
       <Section id="services" className="bg-[#1a1a1a]">
         <Container>
-          <div className="mb-8">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#b0b7c3]">Services</p>
-            <h2 className="mt-2 text-3xl font-black uppercase text-white">In-House Capabilities</h2>
-          </div>
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,_rgba(224,0,18,0.2),_transparent_28%),linear-gradient(135deg,_#111111,_#1d1d1d_48%,_#121212)] p-6 sm:p-8">
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px] opacity-30" />
+            <div className="relative">
+              <div className="grid gap-8 xl:grid-cols-[0.95fr_1.05fr]">
+                <motion.div
+                  variants={reveal}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.2 }}
+                  className="flex flex-col justify-between rounded-[1.6rem] border border-white/10 bg-black/25 p-6 backdrop-blur-sm"
+                >
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#b0b7c3]">Services</p>
+                    <h2 className="mt-3 text-3xl font-black uppercase leading-none text-white sm:text-4xl">In-House Capabilities</h2>
+                    <p className="mt-4 max-w-xl text-sm leading-7 text-[#d0d5dd] sm:text-base">
+                      Built for customers who want parts, installs, and day-to-day service handled by one shop that understands the full build.
+                    </p>
+                  </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            {SERVICES.map((service, idx) => (
-              <motion.div
-                key={service.key}
-                variants={reveal}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: idx * 0.06 }}
-                className="rounded-xl border border-[#d8dde6] bg-white p-5"
-              >
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-md bg-[#8f0f18] text-white">{service.icon}</div>
-                  <h3 className="text-lg font-black uppercase text-[#1f2937]">{service.title}</h3>
-                </div>
-                <ul className="grid gap-2 text-sm text-[#4d5868] sm:grid-cols-2">
-                  {service.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-[#8f0f18]" /><span>{item}</span></li>
+                  <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#b0b7c3]">What We Handle</p>
+                      <p className="mt-2 text-lg font-black uppercase text-white">Parts, Installs, Service</p>
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#b0b7c3]">Built Around</p>
+                      <p className="mt-2 text-lg font-black uppercase text-white">Truck and Performance Owners</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <div className="grid gap-4 md:grid-cols-2">
+                  {SERVICES.map((service, idx) => (
+                    <motion.div
+                      key={service.key}
+                      variants={reveal}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.45, delay: idx * 0.05 }}
+                      className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/6 p-5 backdrop-blur-sm transition hover:border-white/20 hover:bg-white/10"
+                    >
+                      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                      <div className="mb-5 flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#8f0f18] text-white shadow-[0_10px_25px_rgba(143,15,24,0.35)]">
+                            {service.icon}
+                          </div>
+                          <div>
+                            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#b0b7c3]">Capability</p>
+                            <h3 className="text-lg font-black uppercase text-white">{service.title}</h3>
+                          </div>
+                        </div>
+                        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#d0d5dd]">
+                          {service.items.length} Items
+                        </span>
+                      </div>
+
+                      <ul className="grid gap-2 sm:grid-cols-2">
+                        {service.items.map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-start gap-2 rounded-xl border border-white/8 bg-black/20 px-3 py-2 text-sm text-[#eef1f5]"
+                          >
+                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#ff4d4d]" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
                   ))}
-                </ul>
-              </motion.div>
-            ))}
+                </div>
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
