@@ -21,6 +21,9 @@ import heroImage from "../assets/truck_beach_hero.png";
 import twoTruckHero from "../assets/twoTruckHero.JPG?url";
 import caliberTruckHero from "../assets/caliberTruckHero.JPG?url";
 import truckFrontHero from "../assets/truckFrontGallery.JPG?url";
+import truckVanAtvHero from "../assets/truck-van-atv.png";
+import truckVanAtvMobileHero from "../assets/truck-van-atvMobile.png";
+import servicesHero from "../assets/servicesHero.png";
 import aboutImage from "../assets/malachiTruck.JPG?url";
 import companyLogo from "../assets/caliber_truck_logo.png";
 
@@ -51,12 +54,13 @@ import partsGallery from "../assets/partsGallery.JPG?url";
 import motoCaliber from "../assets/motoCaliber.JPG?url";
 
 import liftKitsCategory from "../assets/liftkit_category_final.png";
-import shocksCategory from "../assets/shocks_category.png";
-import springsCategory from "../assets/springs_category.png";
-import riggingCategory from "../assets/rigging_category.png";
-import filtersCategory from "../assets/filters_category.png";
-import winchesCategory from "../assets/winches_category.png";
-import bodykitCategory from "../assets/bodykit_category.png";
+import shocksCategory from "../assets/wheels.png";
+import springsCategory from "../assets/tonneau1.png";
+import riggingCategory from "../assets/performanceKits.png";
+import filtersCategory from "../assets/filtersExhaust1.png";
+import winchesCategory from "../assets/bumpersWinchesCategory.png";
+import bodykitCategory from "../assets/electronicsCategory.png";
+import programmersCategory from "../assets/programmers.png";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
@@ -106,19 +110,19 @@ const CATEGORIES = [
   {
     title: "Shocks & Struts",
     description: "Ride control upgrades tuned for comfort and performance.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4674/#dokan-vendor-categories-anchor",
+    link: "https://fuel1direct.com/product-tag/wheelpros_1/",
     image: shocksCategory,
   },
   {
     title: "Springs",
     description: "Coil and spring options for stance, load, and control.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4675/#dokan-vendor-categories-anchor",
+    link: "https://fuel1direct.com/product-tag/tonnoaue-covers/",
     image: springsCategory,
   },
   {
     title: "Rigging & Steering",
     description: "Core steering and rigging components built to last.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5392/#dokan-vendor-categories-anchor",
+    link: "https://fuel1direct.com/product-tag/delete-kits/",
     image: riggingCategory,
   },
   {
@@ -136,8 +140,13 @@ const CATEGORIES = [
   {
     title: "Body Kits & Spoilers",
     description: "Exterior style and aero-inspired body components.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5595/#dokan-vendor-categories-anchor",
+    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5397/#dokan-vendor-categories-anchor",
     image: bodykitCategory,
+  },
+  {
+    title: "Programmers",
+    description: "Tuning and programming solutions.",
+    image: programmersCategory,
   },
 ];
 
@@ -180,7 +189,8 @@ const HERO_SLIDES = [
     body: "Unlock horsepower, improve durability, and get components selected for your exact setup.",
   },
   {
-    image: heroImage,
+    image: truckVanAtvHero,
+    mobileImage: truckVanAtvMobileHero,
     title: "Performance Parts",
     subtitle: "That Add Power.",
     lead: "Built for trucks, boats, and hard-use builds.",
@@ -199,6 +209,13 @@ const HERO_SLIDES = [
     subtitle: "From Parts to Install.",
     lead: "Get expert recommendations from a team that installs what it sells.",
     body: "Find the right combination of parts before you buy, then get guidance every step.",
+  },
+  {
+    image: servicesHero,
+    title: "Vehicle Services",
+    subtitle: "Handled In-House.",
+    lead: "Oil changes, brakes, maintenance, and diagnostics handled by a shop that knows performance vehicles.",
+    body: "Keep your build running right with reliable service, accurate troubleshooting, and day-to-day maintenance done in-house.",
   },
 ];
 
@@ -452,14 +469,19 @@ export default function CaliberSite() {
       <section id="home" className="relative">
         <div className="relative h-[72vh] overflow-hidden sm:h-[76vh]">
           {HERO_SLIDES.map((slide, idx) => (
-            <img
-              key={slide.title}
-              src={slide.image}
-              alt={slide.title}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+            <picture
+              key={`${slide.title}-${idx}`}
+              className={`absolute inset-0 transition-opacity duration-700 ${
                 idx === activeSlide ? "opacity-100" : "opacity-0"
               }`}
-            />
+            >
+              {slide.mobileImage ? <source media="(max-width: 639px)" srcSet={slide.mobileImage} /> : null}
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="h-full w-full object-cover"
+              />
+            </picture>
           ))}
           <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/30 to-black/45" />
 
@@ -527,6 +549,22 @@ export default function CaliberSite() {
                 }`}
               />
             ))}
+          </div>
+        </div>
+
+        <div className="bg-[#111111] px-4 py-4 md:hidden">
+          <div className="rounded-xl border border-white/15 bg-[#1f1f1f] p-4 shadow-sm">
+            <p className="text-base font-black uppercase leading-tight text-white">
+              Shop Nationwide Products for the Automotive, Powersports, and Marine industries.
+            </p>
+            <a
+              href="https://fuel1direct.com/seller/calibermarineandauto-com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#e00012] px-5 py-3 text-sm font-black uppercase tracking-wide text-white hover:bg-[#b8000e]"
+            >
+              Shop Performance Parts <ArrowRight className="h-5 w-5" />
+            </a>
           </div>
         </div>
       </section>
@@ -661,29 +699,45 @@ export default function CaliberSite() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {CATEGORIES.map((category, idx) => (
-              <motion.a
+              <motion.div
                 key={category.title}
-                href={category.link}
-                target="_blank"
-                rel="noopener noreferrer"
                 variants={reveal}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.45, delay: idx * 0.05 }}
-                className="group relative block h-[17rem] overflow-hidden rounded-xl border border-[#d8dde6] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:h-[18rem] lg:h-[17rem]"
+                className={`group relative overflow-hidden rounded-xl shadow-sm transition ${
+                  category.link ? "hover:-translate-y-0.5 hover:shadow-md" : ""
+                }`}
               >
-                <img
-                  src={category.image}
-                  alt={category.title}
-                  className="block h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
-                  <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-[#161616]">
-                    Shop Category <ArrowRight className="h-3.5 w-3.5" />
-                  </div>
-                </div>
-              </motion.a>
+                {category.link ? (
+                  <a href={category.link} target="_blank" rel="noopener noreferrer" className="block">
+                    <img
+                      src={category.image}
+                      alt={category.title}
+                      className="block w-full rounded-xl transition duration-500 group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
+                      <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-[#161616]">
+                        Shop Category <ArrowRight className="h-3.5 w-3.5" />
+                      </div>
+                    </div>
+                  </a>
+                ) : (
+                  <>
+                    <img
+                      src={category.image}
+                      alt={category.title}
+                      className="block w-full rounded-xl"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent">
+                      <div className="absolute bottom-3 right-3 inline-flex items-center rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-[#161616]">
+                        Coming Soon
+                      </div>
+                    </div>
+                  </>
+                )}
+              </motion.div>
             ))}
 
             <motion.a
@@ -693,7 +747,7 @@ export default function CaliberSite() {
               whileInView="show"
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.45, delay: CATEGORIES.length * 0.05 }}
-              className="group flex h-[17rem] flex-col justify-between overflow-hidden rounded-xl border border-[#d8dde6] bg-[#1f1f1f] p-5 text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:h-[18rem] lg:h-[17rem]"
+              className="group flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-xl border border-[#d8dde6] bg-[#1f1f1f] p-5 text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
             >
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#c8c8c8]">Need Help?</p>
