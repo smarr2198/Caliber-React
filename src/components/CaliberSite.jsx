@@ -27,12 +27,6 @@ import servicesHero from "../assets/servicesHero.png";
 import aboutImage from "../assets/malachiTruck.JPG?url";
 import companyLogo from "../assets/caliber_truck_logo.png";
 
-import roughCountryLogo from "../assets/partners/roughCountry.jpg";
-import goodYearLogo from "../assets/partners/goodYearLogo.jpg";
-import firestoneLogo from "../assets/partners/firestoneLogo.jpg";
-import bfGoodrichLogo from "../assets/partners/bfGoodrichLogo.jpg";
-import hankookLogo from "../assets/partners/hankookLogo.jpg";
-import kellyTiresLogo from "../assets/partners/kellyTiresLogo.jpg";
 
 import gallery1 from "../assets/blackGMC_NoTires.jpeg";
 import gallery2 from "../assets/blackGMCshop.jpeg";
@@ -61,6 +55,34 @@ import filtersCategory from "../assets/filtersExhaust1.png";
 import winchesCategory from "../assets/bumpersWinchesCategory.png";
 import bodykitCategory from "../assets/electronicsCategory.png";
 import programmersCategory from "../assets/programmers.png";
+import bdsLogo from "../assets/bdsLogo.avif";
+import cognitoLogo from "../assets/cognitoLogo.png";
+import readyLiftLogo from "../assets/readyLiftLogo.png";
+import proCompLogo from "../assets/proCompLogo.webp";
+import roughCountryLiftLogo from "../assets/roughCountryLogo.webp";
+import iconLogo from "../assets/iconLogo.svg";
+import fabtechLogo from "../assets/fabtechLogo.png";
+import zoneLogo from "../assets/zoneLogo.webp";
+import sbLogo from "../assets/sbLogo.webp";
+import banksLogo from "../assets/banksLogo.webp";
+import atsLogo from "../assets/atsLogo.avif";
+import fassLogo from "../assets/fassLogo.webp";
+import sinisterLogo from "../assets/sinisterLogo.webp";
+import riffraffLogo from "../assets/riffraffLogo.webp";
+import sctLogo from "../assets/sctLogo.svg";
+import bullydogLogo from "../assets/bullydogLogo.svg";
+import edgeLogo from "../assets/edgeLogo.png";
+import efiLogo from "../assets/efiLogo.png";
+import afeLogo from "../assets/afeLogo.svg";
+import mbrpLogo from "../assets/mbrpLogo.webp";
+import extangLogo from "../assets/extangLogo.webp";
+import retraxLogo from "../assets/retraxLogo.png";
+import weatherguardLogo from "../assets/weatherguardLogo.png";
+import roughCountryAccessoryLogo from "../assets/roughCountryLogo.webp";
+import realTruckLogo from "../assets/realtruckLogo.svg";
+import maghytecLogo from "../assets/maghytecLogo.jpg";
+import huskyLogo from "../assets/huskyLogo.svg";
+import ampLogo from "../assets/ampLogo.avif";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
@@ -157,12 +179,58 @@ const CATEGORIES = [
 ];
 
 const PARTNERS = [
-  { name: "Rough Country", logo: roughCountryLogo },
-  { name: "Goodyear", logo: goodYearLogo },
-  { name: "Firestone", logo: firestoneLogo },
-  { name: "BFGoodrich", logo: bfGoodrichLogo },
-  { name: "Hankook", logo: hankookLogo },
-  { name: "Kelly Tires", logo: kellyTiresLogo },
+  {
+    key: "lift-kits",
+    title: "Lift Kits",
+    eyebrow: "Suspension Brands",
+    description: "Complete systems, steering correction, shocks, and hardware from brands we trust on real builds.",
+    brands: [
+      { name: "BDS", logo: bdsLogo, logoClassName: "scale-[1.38]" },
+      { name: "Cognito", logo: cognitoLogo },
+      { name: "Ready Lift", logo: readyLiftLogo },
+      { name: "Pro Comp", logo: proCompLogo },
+      { name: "Rough Country", logo: roughCountryLiftLogo },
+      { name: "Icon", logo: iconLogo },
+      { name: "Fabtech", logo: fabtechLogo },
+      { name: "Zone", logo: zoneLogo },
+    ],
+  },
+  {
+    key: "performance",
+    title: "Performance",
+    eyebrow: "Power and Tuning",
+    description: "Airflow, tuning, filtration, and drivetrain-focused brands selected for dependable real-world performance.",
+    brands: [
+      { name: "S&B", logo: sbLogo },
+      { name: "Banks", logo: banksLogo },
+      { name: "ATS", logo: atsLogo },
+      { name: "FASS", logo: fassLogo },
+      { name: "Sinister Diesel", logo: sinisterLogo },
+      { name: "Riffraff Diesel", logo: riffraffLogo },
+      { name: "SCT", logo: sctLogo },
+      { name: "Bully Dog", logo: bullydogLogo },
+      { name: "Edge", logo: edgeLogo },
+      { name: "EFI Live", logo: efiLogo },
+      { name: "aFe Power", logo: afeLogo },
+      { name: "MBRP", logo: mbrpLogo },
+    ],
+  },
+  {
+    key: "accessories",
+    title: "Accessories",
+    eyebrow: "Tires and Upgrades",
+    description: "Everyday upgrades, wheel and tire support, and finishing details that complete the look and function of a build.",
+    brands: [
+      { name: "Extang", logo: extangLogo },
+      { name: "Retrax", logo: retraxLogo },
+      { name: "Weather Guard", logo: weatherguardLogo },
+      { name: "Rough Country", logo: roughCountryAccessoryLogo },
+      { name: "RealTruck", logo: realTruckLogo },
+      { name: "Mag-Hytec", logo: maghytecLogo },
+      { name: "Husky", logo: huskyLogo },
+      { name: "AMP", logo: ampLogo },
+    ],
+  },
 ];
 
 const GALLERY_IMAGES = [
@@ -874,16 +942,64 @@ export default function CaliberSite() {
 
       <Section id="partners" className="bg-[#1a1a1a]">
         <Container>
-          <div className="mb-8">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#b0b7c3]">Partners</p>
-            <h2 className="mt-2 text-3xl font-black uppercase text-white">Brands We Install</h2>
-          </div>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {PARTNERS.map((partner) => (
-              <div key={partner.name} className="flex h-20 items-center justify-center rounded-md border border-[#d8dde6] bg-white p-3">
-                <img src={partner.logo} alt={`${partner.name} logo`} className="h-full w-full object-contain" loading="lazy" />
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,_rgba(224,0,18,0.18),_transparent_28%),linear-gradient(135deg,_#111111,_#1c1c1c_48%,_#121212)] p-6 sm:p-8">
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px] opacity-30" />
+            <div className="relative">
+              <div className="mb-8 max-w-3xl">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#b0b7c3]">Partners</p>
+                <h2 className="mt-3 text-3xl font-black uppercase text-white sm:text-4xl">Brands We Work With</h2>
+                <p className="mt-4 text-sm leading-7 text-[#d0d5dd] sm:text-base">
+                  We work across lift kits, performance parts, and accessories with brands that have earned their place on serious builds.
+                </p>
               </div>
-            ))}
+
+              <div className="grid gap-4 xl:grid-cols-3">
+                {PARTNERS.map((partnerGroup, idx) => (
+                  <motion.div
+                    key={partnerGroup.key}
+                    variants={reveal}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.45, delay: idx * 0.05 }}
+                    className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/6 p-5 backdrop-blur-sm transition hover:border-white/20 hover:bg-white/10"
+                  >
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#b0b7c3]">{partnerGroup.eyebrow}</p>
+                      <h3 className="mt-2 text-2xl font-black uppercase text-white">{partnerGroup.title}</h3>
+                      <p className="mt-3 text-sm leading-6 text-[#d0d5dd]">{partnerGroup.description}</p>
+                    </div>
+
+                    <div className="mt-6 border-t border-white/10 pt-5">
+                      <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#b0b7c3]">Partner Brands</p>
+                      <div className="grid grid-cols-2 gap-3">
+                        {partnerGroup.brands.map((brand) => (
+                          <div
+                            key={brand.name}
+                            className="flex h-[4.75rem] items-center justify-center rounded-xl border border-white/10 bg-black/20 px-3 text-center text-xs font-bold uppercase tracking-[0.12em] text-[#eef1f5]"
+                          >
+                            {brand.logo ? (
+                              <img
+                                src={brand.logo}
+                                alt={brand.name}
+                                className={`h-10 w-full object-contain ${brand.logoClassName || ""}`}
+                                loading="lazy"
+                              />
+                            ) : (
+                              <span>{brand.name}</span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-[#b0b7c3]">
+                        And many more
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
