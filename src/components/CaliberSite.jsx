@@ -850,11 +850,19 @@ export default function CaliberSite() {
           <div className="grid items-center gap-8 lg:grid-cols-2">
             <motion.div variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#687180]">About</p>
-              <h2 className="mt-2 text-3xl font-black uppercase text-[#111827]">Caliber Performance</h2>
-              <p className="mt-4 text-[#4d5868]"><strong>Versatility and Quality:</strong> From diagnostics and repairs to surface restoration including fiberglass, gel-coat, detailing, and ceramic coatings, we have you covered.</p>
-              <p className="mt-3 text-[#4d5868]"><strong>Trusted Expertise:</strong> Our track record speaks volumes with clients across marine and high-performance automotive assets.</p>
-              <p className="mt-3 text-[#4d5868]"><strong>Our Promise:</strong> We stand behind our work and focus on improving both form and function with craftsmanship rooted in integrity.</p>
-              <p className="mt-3 text-[#4d5868]"><strong>Our Mission:</strong> Preserving your marine and automotive investments with faith, precision, and integrity.</p>
+              <h2 className="mt-2 font-['Oswald'] text-3xl font-bold uppercase tracking-[0.04em] text-[#8f0f18] sm:text-4xl">Caliber Performance</h2>
+              <p className="mt-4 text-[#4d5868]">
+                With over 30 years of hands-on experience in the truck aftermarket industry, Caliber is built on a foundation of real-world expertise and uncompromising quality. Our team has personally tested and used the majority of the products we offer, ensuring they deliver reliable performance in demanding conditions before they ever reach our customers. We pay meticulous attention to every detail, because we know that precision matters when it comes to your build.
+              </p>
+              <p className="mt-3 text-[#4d5868]">
+                We are not the cheapest option on the market, but we are also not the most expensive. We deliver exceptional value by focusing on products and services that truly work. Our background includes a proven history of manufacturing high-standard components for government applications, where reliability and durability are non-negotiable. That same commitment carries through to every custom truck build and upgrade we handle.
+              </p>
+              <p className="mt-3 text-[#4d5868]">
+                At Caliber, we believe in doing it right the first time. Our pride in craftsmanship is shared by everyone on the team, and we are passionate about creating truck builds that perform flawlessly and stand the test of time. Whether you need tailored recommendations for off-road, towing, performance, or heavy-duty applications, we understand how to match the right solutions to your specific needs.
+              </p>
+              <p className="mt-3 text-[#4d5868]">
+                Choose Caliber for dependable products, expert guidance, and builds you can trust mile after mile.
+              </p>
             </motion.div>
 
             <motion.div variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} transition={{ delay: 0.08 }} className="overflow-hidden rounded-xl border border-[#d8dde6] bg-white p-2">
