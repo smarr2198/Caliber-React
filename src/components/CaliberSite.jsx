@@ -40,6 +40,18 @@ import gallery9 from "../assets/newGallery1.jpg";
 import gallery10 from "../assets/newGallery2.jpg";
 import gallery11 from "../assets/newGallery3.jpg";
 import gallery12 from "../assets/newGallery4.jpg";
+import gallery13 from "../assets/newGallery5.JPG?url";
+import gallery14 from "../assets/newGallery6.JPG?url";
+import gallery15 from "../assets/newGallery7.JPG?url";
+import gallery16 from "../assets/newGallery8.JPG?url";
+import gallery17 from "../assets/newGallery9.JPG?url";
+import gallery18 from "../assets/newGallery10.JPG?url";
+import gallery19 from "../assets/newGallery11.JPG?url";
+import gallery20 from "../assets/newGallery12.JPG?url";
+import gallery21 from "../assets/newGallery13.JPG?url";
+import gallery22 from "../assets/newGallery14.JPG?url";
+import gallery23 from "../assets/newGallery15.JPG?url";
+import gallery24 from "../assets/newGallery16.JPG?url";
 import winchFrontGallery from "../assets/winchFrontGallery.JPG?url";
 import corvetteCaliber from "../assets/corvetteCaliber.JPG?url";
 import carBodyGallery from "../assets/carBody.JPG?url";
@@ -234,24 +246,36 @@ const PARTNERS = [
 ];
 
 const GALLERY_IMAGES = [
-  { id: 1, src: winchFrontGallery, alt: "Winch front setup" },
-  { id: 2, src: corvetteCaliber, alt: "Corvette at Caliber" },
-  { id: 3, src: carBodyGallery, alt: "Body work detail" },
-  { id: 4, src: insideWheelGallery, alt: "Wheel and suspension detail" },
-  { id: 5, src: partsGallery, alt: "Performance parts layout" },
-  { id: 6, src: motoCaliber, alt: "Motorcycle at Caliber" },
-  { id: 7, src: gallery9, alt: "Truck build" },
-  { id: 8, src: gallery10, alt: "Custom truck" },
-  { id: 9, src: gallery11, alt: "Lift setup" },
-  { id: 10, src: gallery12, alt: "Lifted truck" },
-  { id: 11, src: gallery1, alt: "Black GMC without tires" },
-  { id: 12, src: gallery2, alt: "Black GMC in shop" },
-  { id: 13, src: gallery3, alt: "Black lifted 350" },
-  { id: 14, src: gallery4, alt: "Lift kit close-up" },
-  { id: 15, src: gallery5, alt: "Lift kit parts" },
-  { id: 16, src: gallery6, alt: "Silver lifted 250 in shop" },
-  { id: 17, src: gallery7, alt: "Undercarriage work" },
-  { id: 18, src: gallery8, alt: "White GMC in shop" },
+  { id: 1, src: gallery22, alt: "Gallery image 14" },
+  { id: 2, src: gallery13, alt: "Gallery image 5" },
+  { id: 3, src: gallery14, alt: "Gallery image 6" },
+  { id: 4, src: gallery15, alt: "Gallery image 7" },
+  { id: 5, src: gallery16, alt: "Gallery image 8" },
+  { id: 6, src: gallery17, alt: "Gallery image 9" },
+  { id: 7, src: gallery18, alt: "Gallery image 10" },
+  { id: 8, src: gallery19, alt: "Gallery image 11" },
+  { id: 9, src: gallery20, alt: "Gallery image 12" },
+  { id: 10, src: gallery21, alt: "Gallery image 13" },
+  { id: 11, src: gallery23, alt: "Gallery image 15" },
+  { id: 12, src: gallery24, alt: "Gallery image 16" },
+  { id: 13, src: winchFrontGallery, alt: "Winch front setup" },
+  { id: 14, src: corvetteCaliber, alt: "Corvette at Caliber" },
+  { id: 15, src: carBodyGallery, alt: "Body work detail" },
+  { id: 16, src: insideWheelGallery, alt: "Wheel and suspension detail" },
+  { id: 17, src: partsGallery, alt: "Performance parts layout" },
+  { id: 18, src: motoCaliber, alt: "Motorcycle at Caliber" },
+  { id: 19, src: gallery9, alt: "Truck build" },
+  { id: 20, src: gallery10, alt: "Custom truck" },
+  { id: 21, src: gallery11, alt: "Lift setup" },
+  { id: 22, src: gallery12, alt: "Lifted truck" },
+  { id: 23, src: gallery1, alt: "Black GMC without tires" },
+  { id: 24, src: gallery2, alt: "Black GMC in shop" },
+  { id: 25, src: gallery3, alt: "Black lifted 350" },
+  { id: 26, src: gallery4, alt: "Lift kit close-up" },
+  { id: 27, src: gallery5, alt: "Lift kit parts" },
+  { id: 28, src: gallery6, alt: "Silver lifted 250 in shop" },
+  { id: 29, src: gallery7, alt: "Undercarriage work" },
+  { id: 30, src: gallery8, alt: "White GMC in shop" },
 ];
 
 const HERO_SLIDES = [
@@ -1010,7 +1034,7 @@ export default function CaliberSite() {
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#687180]">Gallery</p>
             <h2 className="mt-2 text-3xl font-black uppercase text-[#111827]">Recent Builds</h2>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="columns-1 gap-3 sm:columns-2 lg:columns-4">
             {GALLERY_IMAGES.map((image, idx) => (
               <motion.div
                 key={image.id}
@@ -1019,9 +1043,9 @@ export default function CaliberSite() {
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.4, delay: idx * 0.03 }}
-                className={`overflow-hidden rounded-lg border border-[#d8dde6] ${idx % 5 === 0 ? "lg:col-span-2" : ""}`}
+                className="mb-3 break-inside-avoid overflow-hidden rounded-lg border border-[#d8dde6]"
               >
-                <img src={image.src} alt={image.alt} loading="lazy" className="h-64 w-full object-cover transition duration-500 hover:scale-105 sm:h-72" />
+                <img src={image.src} alt={image.alt} loading="lazy" className="w-full transition duration-500 hover:scale-[1.02]" />
               </motion.div>
             ))}
           </div>
