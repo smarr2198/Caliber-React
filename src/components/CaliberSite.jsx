@@ -144,48 +144,50 @@ const CATEGORIES = [
   {
     title: "Lift Kits",
     description: "Suspension lift systems and complete package options.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4673/#dokan-vendor-categories-anchor",
+    shopCategory: "Lift Kits (leveling, body lifts, suspension lifts)",
+    shopQuery: "Lift Kits",
     image: liftKitsCategory,
   },
   {
     title: "Shocks & Struts",
     description: "Ride control upgrades tuned for comfort and performance.",
-    link: "https://fuel1direct.com/product-tag/wheelpros_1/",
+    shopQuery: "Wheels",
     image: shocksCategory,
   },
   {
     title: "Intake Filters & Exhaust",
     description: "Intake, filtration, and exhaust upgrades for airflow and sound.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/4898/#dokan-vendor-categories-anchor",
+    shopQuery: "Exhaust",
     image: filtersCategory,
   },
   {
     title: "Rigging & Steering",
     description: "Core steering and rigging components built to last.",
-    link: "https://fuel1direct.com/product-tag/delete-kits/",
+    shopQuery: "Delete Kits",
     image: riggingCategory,
   },
   {
     title: "Tonneau Covers",
     description: "Bed cover options built for protection, style, and utility.",
-    link: "https://fuel1direct.com/product-tag/tonnoaue-covers/",
+    shopQuery: "Tonneau Covers",
     image: springsCategory,
   },
   {
     title: "Winches & Hoists",
     description: "Recovery-ready winches, hoists, and mounting solutions.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5597/#dokan-vendor-categories-anchor",
+    shopQuery: "Winches",
     image: winchesCategory,
   },
   {
     title: "Body Kits & Spoilers",
     description: "Exterior style and aero-inspired body components.",
-    link: "https://fuel1direct.com/seller/calibermarineandauto-com/section/5397/#dokan-vendor-categories-anchor",
+    shopQuery: "Electronics",
     image: bodykitCategory,
   },
   {
     title: "Programmers",
     description: "Tuning and programming solutions.",
+    shopQuery: "Programmers",
     image: programmersCategory,
   },
 ];
@@ -369,6 +371,13 @@ const reveal = {
   show: { opacity: 1, y: 0 },
 };
 
+function getShopCategoryHref(category) {
+  const params = new URLSearchParams();
+  params.set("category", category.shopCategory || category.title);
+  params.set("fallback", category.shopQuery || category.title);
+  return `/shop?${params.toString()}`;
+}
+
 export default function CaliberSite() {
   const scrolled = useScrollHeader();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -382,6 +391,7 @@ export default function CaliberSite() {
     }, 6000);
     return () => clearInterval(timer);
   }, []);
+
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
@@ -556,7 +566,7 @@ export default function CaliberSite() {
                   {item.label}
                 </a>
               ))}
-              <a href="https://fuel1direct.com/seller/calibermarineandauto-com/" target="_blank" rel="noopener noreferrer" className="mt-1 rounded bg-[#8f0f18] px-3 py-2 text-center text-sm font-bold uppercase">
+              <a href="/shop" className="mt-1 rounded bg-[#8f0f18] px-3 py-2 text-center text-sm font-bold uppercase">
                 Search Parts
               </a>
             </div>
@@ -624,9 +634,7 @@ export default function CaliberSite() {
                   Shop Nationwide Products for the Automotive, Powersports, and Marine industries.
                 </p>
                 <a
-                  href="https://fuel1direct.com/seller/calibermarineandauto-com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/shop"
                   className="pointer-events-auto mt-4 inline-flex items-center gap-2 rounded-full bg-[#e00012] px-6 py-3 text-sm font-black uppercase tracking-wide text-white hover:bg-[#b8000e]"
                 >
                   Shop Performance Parts <ArrowRight className="h-5 w-5" />
@@ -656,9 +664,7 @@ export default function CaliberSite() {
               Shop Nationwide Products for the Automotive, Powersports, and Marine industries.
             </p>
             <a
-              href="https://fuel1direct.com/seller/calibermarineandauto-com/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/shop"
               className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#e00012] px-5 py-3 text-sm font-black uppercase tracking-wide text-white hover:bg-[#b8000e]"
             >
               Shop Performance Parts <ArrowRight className="h-5 w-5" />
@@ -788,76 +794,104 @@ export default function CaliberSite() {
 
       <Section id="shop" className="bg-white">
         <Container>
-          <div className="mb-8 flex items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#687180]">Categories</p>
-              <h2 className="mt-2 text-3xl font-black uppercase text-[#111827]">Shop By Category</h2>
+          <div className="mb-12">
+            <div className="mb-8 flex items-end justify-between gap-4">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#687180]">Featured Categories</p>
+                <h2 className="mt-2 text-3xl font-black uppercase text-[#111827]">Shop By Category</h2>
+              </div>
             </div>
-          </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {CATEGORIES.map((category, idx) => (
-              <motion.div
-                key={category.title}
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {CATEGORIES.map((category, idx) => (
+                <motion.div
+                  key={category.title}
+                  variants={reveal}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: idx * 0.05 }}
+                  className={`group relative overflow-hidden rounded-xl shadow-sm transition ${
+                    category.link ? "hover:-translate-y-0.5 hover:shadow-md" : ""
+                  }`}
+                >
+                  {category.shopQuery ? (
+                    <a href={getShopCategoryHref(category)} className="block">
+                      <img
+                        src={category.image}
+                        alt={category.title}
+                        className="block w-full rounded-xl transition duration-500 group-hover:scale-[1.04]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
+                        <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-[#161616]">
+                          Shop Category <ArrowRight className="h-3.5 w-3.5" />
+                        </div>
+                      </div>
+                    </a>
+                  ) : (
+                    <>
+                      <img
+                        src={category.image}
+                        alt={category.title}
+                        className="block w-full rounded-xl"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent">
+                        <div className="absolute bottom-3 right-3 inline-flex items-center rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-[#161616]">
+                          Coming Soon
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </motion.div>
+              ))}
+
+              <motion.a
+                href="#contact"
                 variants={reveal}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: idx * 0.05 }}
-                className={`group relative overflow-hidden rounded-xl shadow-sm transition ${
-                  category.link ? "hover:-translate-y-0.5 hover:shadow-md" : ""
-                }`}
+                transition={{ duration: 0.45, delay: CATEGORIES.length * 0.05 }}
+                className="group flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-xl border border-[#d8dde6] bg-[#1f1f1f] p-5 text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
               >
-                {category.link ? (
-                  <a href={category.link} target="_blank" rel="noopener noreferrer" className="block">
-                    <img
-                      src={category.image}
-                      alt={category.title}
-                      className="block w-full rounded-xl transition duration-500 group-hover:scale-[1.04]"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent opacity-0 transition duration-300 group-hover:opacity-100">
-                      <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-[#161616]">
-                        Shop Category <ArrowRight className="h-3.5 w-3.5" />
-                      </div>
-                    </div>
-                  </a>
-                ) : (
-                  <>
-                    <img
-                      src={category.image}
-                      alt={category.title}
-                      className="block w-full rounded-xl"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent">
-                      <div className="absolute bottom-3 right-3 inline-flex items-center rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-[#161616]">
-                        Coming Soon
-                      </div>
-                    </div>
-                  </>
-                )}
-              </motion.div>
-            ))}
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#c8c8c8]">Need Help?</p>
+                  <h3 className="mt-2 text-xl font-black uppercase leading-tight">Find The Right Category Fast</h3>
+                  <p className="mt-3 text-sm text-[#d7d7d7]">
+                    Tell us what you are building and we will point you to the best category and parts.
+                  </p>
+                </div>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.12em] text-[#ff4d4d]">
+                  Contact Our Team <ArrowRight className="h-4 w-4" />
+                </span>
+              </motion.a>
+            </div>
+          </div>
 
-            <motion.a
-              href="#contact"
-              variants={reveal}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: CATEGORIES.length * 0.05 }}
-              className="group flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-xl border border-[#d8dde6] bg-[#1f1f1f] p-5 text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-            >
+          <div className="rounded-[2rem] border border-[#d8dde6] bg-[radial-gradient(circle_at_top_left,_rgba(143,15,24,0.08),_transparent_28%),linear-gradient(180deg,_#ffffff,_#f5f7fb)] p-6 sm:p-8">
+            <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#c8c8c8]">Need Help?</p>
-                <h3 className="mt-2 text-xl font-black uppercase leading-tight">Find The Right Category Fast</h3>
-                <p className="mt-3 text-sm text-[#d7d7d7]">
-                  Tell us what you are building and we will point you to the best category and parts.
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#687180]">Online Store</p>
+                <h3 className="mt-3 text-3xl font-black uppercase leading-none text-[#111827] sm:text-4xl">Browse The Full Caliber Shop</h3>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-[#546071] sm:text-base">
+                  We moved the full storefront to its own page so browsing products feels faster, cleaner, and easier to shop. Explore the catalog there, then jump straight to each WooCommerce product page when you are ready.
                 </p>
               </div>
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.12em] text-[#ff4d4d]">
-                Contact Our Team <ArrowRight className="h-4 w-4" />
-              </span>
-            </motion.a>
+              <div className="rounded-[1.5rem] border border-[#d8dde6] bg-white p-5 shadow-sm">
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#687180]">Why Use The Shop Page</p>
+                <div className="mt-4 grid gap-3">
+                  <div className="rounded-xl border border-[#e5e9f0] bg-[#f7f9fc] px-4 py-3 text-sm font-semibold text-[#111827]">Search by product, brand, or SKU</div>
+                  <div className="rounded-xl border border-[#e5e9f0] bg-[#f7f9fc] px-4 py-3 text-sm font-semibold text-[#111827]">Filter by cleaner storefront categories</div>
+                  <div className="rounded-xl border border-[#e5e9f0] bg-[#f7f9fc] px-4 py-3 text-sm font-semibold text-[#111827]">Browse in batches with Load More</div>
+                </div>
+                <a
+                  href="/shop"
+                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#8f0f18] px-6 py-3 text-sm font-black uppercase tracking-[0.12em] text-white transition hover:bg-[#720c14]"
+                >
+                  Open Full Shop <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
