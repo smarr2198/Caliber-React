@@ -373,9 +373,10 @@ const reveal = {
 
 function getShopCategoryHref(category) {
   const params = new URLSearchParams();
+  params.set("page", "shop");
   params.set("category", category.shopCategory || category.title);
   params.set("fallback", category.shopQuery || category.title);
-  return `/shop?${params.toString()}`;
+  return `/?${params.toString()}`;
 }
 
 export default function CaliberSite() {
@@ -566,7 +567,7 @@ export default function CaliberSite() {
                   {item.label}
                 </a>
               ))}
-              <a href="/shop" className="mt-1 rounded bg-[#8f0f18] px-3 py-2 text-center text-sm font-bold uppercase">
+              <a href="/?page=shop" className="mt-1 rounded bg-[#8f0f18] px-3 py-2 text-center text-sm font-bold uppercase">
                 Search Parts
               </a>
             </div>
@@ -634,7 +635,7 @@ export default function CaliberSite() {
                   Shop Nationwide Products for the Automotive, Powersports, and Marine industries.
                 </p>
                 <a
-                  href="/shop"
+                  href="/?page=shop"
                   className="pointer-events-auto mt-4 inline-flex items-center gap-2 rounded-full bg-[#e00012] px-6 py-3 text-sm font-black uppercase tracking-wide text-white hover:bg-[#b8000e]"
                 >
                   Shop Performance Parts <ArrowRight className="h-5 w-5" />
@@ -664,7 +665,7 @@ export default function CaliberSite() {
               Shop Nationwide Products for the Automotive, Powersports, and Marine industries.
             </p>
             <a
-              href="/shop"
+              href="/?page=shop"
               className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#e00012] px-5 py-3 text-sm font-black uppercase tracking-wide text-white hover:bg-[#b8000e]"
             >
               Shop Performance Parts <ArrowRight className="h-5 w-5" />
@@ -885,7 +886,7 @@ export default function CaliberSite() {
                   <div className="rounded-xl border border-[#e5e9f0] bg-[#f7f9fc] px-4 py-3 text-sm font-semibold text-[#111827]">Browse in batches with Load More</div>
                 </div>
                 <a
-                  href="/shop"
+                  href="/?page=shop"
                   className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#8f0f18] px-6 py-3 text-sm font-black uppercase tracking-[0.12em] text-white transition hover:bg-[#720c14]"
                 >
                   Open Full Shop <ArrowRight className="h-4 w-4" />
