@@ -371,6 +371,9 @@ const reveal = {
   show: { opacity: 1, y: 0 },
 };
 
+const SHOP_ADDRESS = "3849 Acline Rd, Unit 108, Punta Gorda, Florida";
+const SHOP_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SHOP_ADDRESS)}`;
+
 function getShopCategoryHref(category) {
   const params = new URLSearchParams();
   params.set("page", "shop");
@@ -498,7 +501,15 @@ export default function CaliberSite() {
         <Container className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 py-2 text-[11px] font-black uppercase tracking-[0.1em] sm:justify-between">
           <span>Caliber Performance LLC</span>
           <span className="hidden sm:inline text-white/70">|</span>
-          <span>Punta Gorda, Florida</span>
+          <a
+            href={SHOP_MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline-offset-4 transition hover:text-white/85 hover:underline"
+            aria-label={`Open directions to ${SHOP_ADDRESS}`}
+          >
+            {SHOP_ADDRESS}
+          </a>
           <span className="hidden sm:inline text-white/70">|</span>
           <span>Custom Lift Kit Packages</span>
           <span className="hidden sm:inline text-white/70">|</span>
