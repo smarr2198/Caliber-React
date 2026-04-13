@@ -67,6 +67,7 @@ import filtersCategory from "../assets/filtersExhaust1.png";
 import winchesCategory from "../assets/bumpersWinchesCategory.png";
 import bodykitCategory from "../assets/electronicsCategory.png";
 import programmersCategory from "../assets/programmers.png";
+import airSpringKitCategory from "../assets/AirSpringKit.png";
 import bdsLogo from "../assets/bdsLogo.avif";
 import cognitoLogo from "../assets/cognitoLogo.png";
 import readyLiftLogo from "../assets/readyLiftLogo.png";
@@ -189,6 +190,12 @@ const CATEGORIES = [
     description: "Tuning and programming solutions.",
     shopQuery: "Programmers",
     image: programmersCategory,
+  },
+  {
+    title: "Air Spring Kits",
+    description: "Air spring support and load-leveling upgrades.",
+    shopQuery: "Air Spring Kits",
+    image: airSpringKitCategory,
   },
 ];
 

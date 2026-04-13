@@ -1,4 +1,18 @@
 import caliberProductsCsvUrl from "../assets/CaliberProducts.csv?url";
+import caliberLogiqCsvUrl from "../assets/CaliberLOGIQ.csv?url";
+import caliberShocksCsvUrl from "../assets/CaliberShocks.csv?url";
+import caliberTonnoaueCsvUrl from "../assets/CaliberTonnoaue.csv?url";
+
+const PRODUCT_FEED_URLS = [
+  caliberProductsCsvUrl,
+  caliberLogiqCsvUrl,
+  caliberShocksCsvUrl,
+  caliberTonnoaueCsvUrl,
+];
+
+const CATEGORY_LABEL_OVERRIDES = {
+  "Body Kits & Spoilers": "Tonnoaue Covers",
+};
 
 function parseCsv(text) {
   const rows = [];
@@ -108,7 +122,8 @@ function choosePrimaryCategory(categoryField) {
   const deepestPath = [...categoryPaths].sort((a, b) => b.length - a.length)[0];
   const segments = normalizeCategoryPath(deepestPath);
   const filteredSegments = segments.filter((segment) => !isVariantLikeCategory(segment));
-  return filteredSegments[filteredSegments.length - 1] || segments[segments.length - 1] || "";
+  const rawCategory = filteredSegments[filteredSegments.length - 1] || segments[segments.length - 1] || "";
+  return CATEGORY_LABEL_OVERRIDES[rawCategory] || rawCategory;
 }
 
 function normalizeProduct(row) {
@@ -138,8 +153,8 @@ function normalizeProduct(row) {
   };
 }
 
-export async function loadCaliberProducts() {
-  const response = await fetch(caliberProductsCsvUrl);
+async function loadProductFeed(feedUrl) {
+  const response = await fetch(feedUrl);
   if (!response.ok) {
     throw new Error(`Failed to load product feed: ${response.status}`);
   }
@@ -151,6 +166,21 @@ export async function loadCaliberProducts() {
   return records
     .map(normalizeProduct)
     .filter((product) => product.title && product.productPageUrl);
+}
+
+export async function loadCaliberProducts() {
+  const productGroups = await Promise.all(PRODUCT_FEED_URLS.map(loadProductFeed));
+  const mergedProducts = productGroups.flat();
+
+  const dedupedProducts = new Map();
+  mergedProducts.forEach((product) => {
+    const dedupeKey = product.productPageUrl || product.id || product.slug || product.title;
+    if (!dedupedProducts.has(dedupeKey)) {
+      dedupedProducts.set(dedupeKey, product);
+    }
+  });
+
+  return [...dedupedProducts.values()];
 }
 
 export function buildShopFacets(products) {
