@@ -146,55 +146,53 @@ const CATEGORIES = [
     title: "Lift Kits",
     description: "Suspension lift systems and complete package options.",
     shopCategory: "Lift Kits (leveling, body lifts, suspension lifts)",
-    shopQuery: "Lift Kits",
     image: liftKitsCategory,
   },
   {
-    title: "Shocks & Struts",
+    title: "Wheels & Tires",
     description: "Ride control upgrades tuned for comfort and performance.",
-    shopQuery: "Wheels",
+    shopCategory: "Wheels & Rims",
     image: shocksCategory,
   },
   {
     title: "Intake Filters & Exhaust",
     description: "Intake, filtration, and exhaust upgrades for airflow and sound.",
-    shopQuery: "Exhaust",
+    shopCategory: "Air Filters",
     image: filtersCategory,
   },
   {
-    title: "Rigging & Steering",
+    title: "Performance Kits",
     description: "Core steering and rigging components built to last.",
-    shopQuery: "Delete Kits",
+    shopCategory: "Shocks & Struts - Truck",
     image: riggingCategory,
   },
   {
     title: "Tonneau Covers",
     description: "Bed cover options built for protection, style, and utility.",
-    shopQuery: "Tonneau Covers",
+    shopCategory: "Tonnoaue Covers",
     image: springsCategory,
   },
   {
     title: "Winches & Hoists",
     description: "Recovery-ready winches, hoists, and mounting solutions.",
-    shopQuery: "Winches",
+    shopCategory: "Winches & Hoists",
     image: winchesCategory,
   },
   {
-    title: "Body Kits & Spoilers",
+    title: "Electronics & Accessories",
     description: "Exterior style and aero-inspired body components.",
-    shopQuery: "Electronics",
+    shopCategory: "Cleaners, Protectants, & Degreasers",
     image: bodykitCategory,
   },
   {
     title: "Programmers",
     description: "Tuning and programming solutions.",
-    shopQuery: "Programmers",
     image: programmersCategory,
   },
   {
-    title: "Air Spring Kits",
+    title: "Air Spring Kit",
     description: "Air spring support and load-leveling upgrades.",
-    shopQuery: "Air Spring Kits",
+    shopCategory: "Air Ride & Load-Leveling Kits - Truck",
     image: airSpringKitCategory,
   },
 ];
@@ -385,7 +383,6 @@ function getShopCategoryHref(category) {
   const params = new URLSearchParams();
   params.set("page", "shop");
   params.set("category", category.shopCategory || category.title);
-  params.set("fallback", category.shopQuery || category.title);
   return `/?${params.toString()}`;
 }
 
@@ -834,7 +831,7 @@ export default function CaliberSite() {
                     category.link ? "hover:-translate-y-0.5 hover:shadow-md" : ""
                   }`}
                 >
-                  {category.shopQuery ? (
+                  {category.shopCategory ? (
                     <a href={getShopCategoryHref(category)} className="block">
                       <img
                         src={category.image}

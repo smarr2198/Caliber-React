@@ -4,6 +4,16 @@ import { buildShopFacets, loadCaliberProducts } from "../lib/caliberShop";
 import companyLogo from "../assets/caliber_truck_logo.png";
 
 const SHOP_PAGE_SIZE = 24;
+const SHOP_CATEGORY_LABELS = {
+  "Lift Kits (leveling, body lifts, suspension lifts)": "Lift Kits",
+  "Wheels & Rims": "Wheels & Tires",
+  "Air Filters": "Intake Filters & Exhaust",
+  "Shocks & Struts - Truck": "Performance Kits",
+  "Tonnoaue Covers": "Tonneau Covers",
+  "Winches & Hoists": "Bumpers & Winches",
+  "Cleaners, Protectants, & Degreasers": "Electronics & Accessories",
+  "Air Ride & Load-Leveling Kits - Truck": "Air Spring Kit",
+};
 
 function formatPrice(value) {
   if (value == null) return "View Product";
@@ -17,6 +27,10 @@ function formatPrice(value) {
 
 function Container({ className = "", children }) {
   return <div className={`mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 ${className}`}>{children}</div>;
+}
+
+function getShopCategoryLabel(category) {
+  return SHOP_CATEGORY_LABELS[category] || category;
 }
 
 export default function ShopPage() {
@@ -102,7 +116,6 @@ export default function ShopPage() {
 
     const params = new URLSearchParams(window.location.search);
     const requestedCategory = params.get("category")?.trim();
-    const fallbackSearch = params.get("fallback")?.trim();
     const requestedSearch = params.get("q")?.trim();
 
     if (requestedSearch) {
@@ -110,16 +123,16 @@ export default function ShopPage() {
     }
 
     if (requestedCategory) {
+      if (shopFacets.categories.length === 0) {
+        return;
+      }
+
       const matchedCategory = shopFacets.categories.find(
         (category) => category.toLowerCase() === requestedCategory.toLowerCase()
       );
 
       if (matchedCategory) {
         setShopCategory(matchedCategory);
-      } else if (fallbackSearch) {
-        setShopSearch((prev) => prev || fallbackSearch);
-      } else {
-        setShopSearch((prev) => prev || requestedCategory);
       }
     }
 
@@ -245,7 +258,7 @@ export default function ShopPage() {
                         <option>All Categories</option>
                         {shopFacets.categories.map((category) => (
                           <option key={category} value={category}>
-                            {category}
+                            {getShopCategoryLabel(category)}
                           </option>
                         ))}
                       </select>

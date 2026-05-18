@@ -2,12 +2,14 @@ import caliberProductsCsvUrl from "../assets/CaliberProducts.csv?url";
 import caliberLogiqCsvUrl from "../assets/CaliberLOGIQ.csv?url";
 import caliberShocksCsvUrl from "../assets/CaliberShocks.csv?url";
 import caliberTonnoaueCsvUrl from "../assets/CaliberTonnoaue.csv?url";
+import caliberAirLiftCsvUrl from "../assets/CaliberAirLift.csv?url";
 
 const PRODUCT_FEED_URLS = [
   caliberProductsCsvUrl,
   caliberLogiqCsvUrl,
   caliberShocksCsvUrl,
   caliberTonnoaueCsvUrl,
+  caliberAirLiftCsvUrl,
 ];
 
 const CATEGORY_LABEL_OVERRIDES = {
